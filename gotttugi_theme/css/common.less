@@ -1,0 +1,362 @@
+
+
+
+/* ---------- TYPOGRAPHY  ---------- */
+
+@typo_sans_serif: "Noto Serif KR", serif;
+@typo_sans: "Noto Sans KR", sans-serif;
+@typo_light: 300;
+
+
+.typo_title_big {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 55px;
+  letter-spacing: -0.05em;
+}
+
+.lh_title_big {
+  line-height: 67px;
+}
+
+.typo_title {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 43px;
+  letter-spacing: -0.05em;
+}
+.typo_title_littlesmall {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 36px;
+  letter-spacing: -0.05em;
+}
+.typo_title__lh {
+  line-height: 1.227em;
+}
+
+.typo_title_small {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 34px;
+  letter-spacing: -0.05em;
+}
+
+.typo_title_small_bold {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 34px;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+
+.typo_title_small__lh {
+  line-height: 1.273em;
+}
+
+.typo_title_small_smaller {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 28px;
+  letter-spacing: -0.05em;
+}
+
+
+.typo_content_title {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 26px;
+  letter-spacing: -0.05em;
+}
+
+.typo_content_title_bold {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 26px;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+
+.typo_content_title__lh {
+  line-height: 1.44em;
+}
+
+.typo_content_title_littlesmall {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 24px;
+  letter-spacing: -0.05em;
+}
+
+
+.typo_content_title_littlesmaller {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 21px;
+  letter-spacing: -0.05em;
+}
+
+
+.typo_content_title_small {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+}
+.typo_content_title_small_bold {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+.typo_content_title_small_sans {
+  font-family: @typo_sans;
+  font-weight: @typo_light;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+}
+.typo_content_title_small_sans_bold {
+  font-family: @typo_sans;
+  font-weight: @typo_light;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+.typo_content_title_small__lh {
+  line-height: 1.5em;
+}
+
+.typo_content {
+  font-family: @typo_sans;
+  font-weight: @typo_light;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.typo_content_serif {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.typo_content_bold {
+  font-family: @typo_sans;
+  font-weight: @typo_light;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.typo_content_serif{
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.typo_content_serif_bold {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.typo_content__lh {
+  line-height: 1.688em;
+}
+
+.typo_content_small {
+  font-family: @typo_sans;
+  font-weight: @typo_light;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.typo_content_small_serif {
+  font-family: @typo_sans_serif;
+  font-weight: @typo_light;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.typo_content_small__lh {
+  line-height: 1.929em;
+}
+
+body {
+  .typo_content();
+  color: @color_black;
+}
+
+a {
+  .typo_content();
+  color: @color_black;
+  text-decoration: none;
+}
+
+/* --------- COLOR ------------ */
+
+@color_white: #fff;
+@color_grey: rgb(227, 227, 227); // #e3e3e3;
+@color_grey75: rgb(234, 234, 234); // #eaeaea
+@color_grey50: rgb(241, 241, 241); // #f1f1f1
+@color_grey25: rgb(248, 248, 248); // #f8f8f8
+@color_black: rgb(51,51,51); // #333333;
+@color_black75: rgb(102, 102, 102); // #666666
+@color_black50: rgb(153, 153, 153); // #999999
+@color_black25: rgb(204, 204, 204); // #cccccc
+@color_black_light: rgb(68, 68, 68); // #444444
+@color_red: #e0393d;
+@color_red_dark: #9a0000;
+@color_yellow: #fef100;
+@color_yellow_dark: #d6cc10;
+@color_yellow_border: #FFEC48;
+@color_yellow_text: #ffda21;
+@color_orange: #fbaf4d;
+@color_blue: #004796;
+@color_blue_dark: #083262;
+
+.color_red {
+  color: @color_red;
+}
+
+.color_blue {
+  color: @color_blue;
+}
+
+.color_white {
+  color: @color_white;
+}
+
+.color_black75 {
+  color: @color_black75;
+}
+
+
+.type--light {
+  color: @color_black75;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: @color_red;
+  background: @color_yellow;
+}
+
+::selection {
+  color: @color_red;
+  background: @color_yellow;
+}
+
+/* ---------- LAYOUT  ---------- */
+@line_1line: 27px;
+@line_2line: 54px;
+@line_3line: 81px;
+
+.container {
+  width: 1110px;
+  margin: 0 auto;
+}
+
+@media all and (max-width: 1110px) {
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+} 
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- COMMON  ---------- */
+
+.z_index_back {
+  z-index: -1;
+}
+.z_index_low {
+  z-index: 1;
+}
+.z_index_high {
+  z-index: 3;
+}
+
+.hidden_text {
+  display: inline-block;
+  text-indent: -9999em;
+  outline: none;
+}
+
+.shadow {
+  box-shadow: 3px 3px 3px rgba(227, 227, 227, 0.25);
+}
+
+.shadow_dark {
+  box-shadow: 0px 3px 3px rgba(102,102,102,0.5);
+}
+
+.no_shadow {
+  box-shadow: none;
+}
+
+.flex_center_center {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.center_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center_horizontal {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center_vertical {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fill_parent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.m_validate_ok {
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+/* ------------ FLEX 지원 안할 때 대체 CSS ----------- */
+// .no-flexbox {
+// }
