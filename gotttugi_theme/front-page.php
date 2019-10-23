@@ -1,7 +1,6 @@
 <?php
 get_header();
 ?>
-<body class="main">  
   <a href="#content" class="skip_navigation"><span>회사소개 바로가기</span></a>
   <div id="fullpage">
     <div class="section fp-auto-height">

@@ -43,6 +43,8 @@ $(document).ready(function() {
 
   var weatherData = {};
 
+  var BASE_URI = $('#base_uri').data('base_uri'); 
+
   if ($(document.body).hasClass('main')) {
     initMain();
     addEventListener();
@@ -934,11 +936,11 @@ function fitVideo($video) {
 
 function initNews() {
   if($(window).outerWidth() < 650) {
-    $('.news_image_2').attr('src', "images/event_2_mobile.jpg");
-    $('.news_image_3').attr('src', "images/event_3_mobile.jpg");
+    $('.news_image_2').attr('src', BASE_URI + "/images/event_2_mobile.jpg");
+    $('.news_image_3').attr('src', BASE_URI + "/images/event_3_mobile.jpg");
   } else {
-    $('.news_image_2').attr('src', "images/event_2.jpg");
-    $('.news_image_3').attr('src', "images/event_3.jpg");
+    $('.news_image_2').attr('src', BASE_URI + "/images/event_2.jpg");
+    $('.news_image_3').attr('src', BASE_URI + "/images/event_3.jpg");
   }
 }
 

@@ -110,3 +110,6 @@
     <meta property="og:url" content="http://www.rahata1.dothome.co.kr" />
 
    </head>
+
+<body class="main">     
+<div id="base_uri" class="hidden" data-base_uri="<?php echo BASE_URI ?>"></div>

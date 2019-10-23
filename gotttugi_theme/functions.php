@@ -18,7 +18,7 @@ function load_styles() {
   wp_enqueue_style( 'reset', BASE_URI . '/css/reset.css'  ); 
   wp_enqueue_style( 'swiper', BASE_URI . '/css/swiper.min.css' );
   wp_enqueue_style( 'app', BASE_URI . '/css/app.css', '1.0.0' );  
-  wp_enqueue_style( 'app', BASE_URI . '/css/font.css', array(), '1.0.0', true );
+  wp_enqueue_style( 'app', BASE_URI . '/css/font.css', array(), '1.0.0', true );  // 푸터 쪽에 로드됨
 }
 add_action('wp_enqueue_scripts', 'load_styles');
 
