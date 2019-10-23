@@ -111,9 +111,9 @@
 
    </head>
 
-<body class="main">     
+<body <?php body_class('main') ?>>     
 <div id="base_uri" class="hidden" data-base_uri="<?php echo BASE_URI ?>"></div>
-<a href="#content" class="skip_navigation"><span>회사소개 바로가기</span></a>
+<a href="#content" class="skip_navigation"><span>컨텐츠 바로가기</span></a>
 <header class="container">
   <div class="upper_nav">
     <h1>
