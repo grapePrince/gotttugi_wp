@@ -32,7 +32,6 @@ get_header('sub');
   >오뚜기 몰로 가기</a>
 </section>
 
-
 <section class="l_product_banner s_product_banner">
   <div class="l_product_banner__container container">
     <img

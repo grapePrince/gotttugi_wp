@@ -33,3 +33,50 @@ function modify_jquery_version() {
 }
 add_action('init', 'modify_jquery_version');
 
+// custom post
+function product_post_type()
+{
+  register_post_type('products',
+    array(
+      'label' => 'Products',
+      'labels' => 
+        array(
+          'name' => __('Products'),
+          'singular_name' => __('Product')
+        ),
+      'public' => true,
+      'has_archive' => true,
+      'rewrite' => true, 
+      'supports' => 
+        array( 'title', 
+          'editor', 
+          'thumbnail',
+          'excerpt', 
+          'custom-fields'
+        )
+    )
+  );
+}
+add_action('init', 'product_post_type'); 
+
+function create_my_portfolio_category() {
+  register_taxonomy(
+      'product_category',
+      'products',
+      array(
+        'label' => 'Product_Categories',
+        'labels' => 
+          array(
+            'name' => __('Product_Categories'),
+            'singular_name' => __('Product_Category'),
+        ),
+        'rewrite' => true,         
+        'hierarchical' => true,
+      )
+  );
+}
+add_action( 'init', 'create_my_portfolio_category' );
+
+register_taxonomy_for_object_type( 'product_category', 'products' );
+
+add_theme_support( 'post-thumbnails' ); 
