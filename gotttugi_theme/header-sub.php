@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
-  <title><?php bloginfo( 'name' ); ?>::<?php wp_title(); ?></title>
+  <title><?php bloginfo( 'name' ); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
   <?php wp_head(); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -73,19 +73,19 @@
     rel="icon"
     type="image/png"
     sizes="32x32"
-    href="<?php echo BASE_URI .'/images/favicon/apple-icon-32x32.png'?>"
+    href="<?php echo BASE_URI .'/images/favicon/favicon-32x32.png'?>"
   />
   <link
     rel="icon"
     type="image/png"
     sizes="96x96"
-    href="<?php echo BASE_URI .'/images/favicon/apple-icon-96x96.png'?>"
+    href="<?php echo BASE_URI .'/images/favicon/favicon-96x96.png'?>"
   />
   <link
     rel="icon"
     type="image/png"
     sizes="16x16"
-    href="<?php echo BASE_URI .'/images/favicon/apple-icon-16x16.png'?>"
+    href="<?php echo BASE_URI .'/images/favicon/favicon-16x16.png'?>"
   />
 
   <link rel="manifest" href="<?php echo BASE_URI .'/images/favicon/manifest.json'?>" />
@@ -110,7 +110,15 @@
   <meta property="og:url" content="http://www.rahata1.dothome.co.kr" />
 </head>
 
-<body <?php body_class('sub') ?>>     
+<body 
+<?php 
+  if(defined('CURRENT_PAGE') && CURRENT_PAGE == "product_list") {
+    body_class('sub js-product_list');
+  } else {
+    body_class('sub');
+  }
+?>
+>     
 <div id="base_uri" class="hidden" data-base_uri="<?php echo BASE_URI ?>"></div>
 <a href="#content" class="skip_navigation"><span>컨텐츠 바로가기</span></a>
 <header class="container">

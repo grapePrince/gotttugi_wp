@@ -92,3 +92,4 @@ require_once( ABSPATH . 'wp-settings.php' );
 
 /** global variables */
 define('BASE_URI', get_stylesheet_directory_uri());
+

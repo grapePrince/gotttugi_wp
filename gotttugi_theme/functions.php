@@ -8,6 +8,7 @@ function load_scripts() {
   wp_enqueue_script( 'bxslider', BASE_URI . '/js/jquery.bxslider.js', array('jquery'), false, true );
   wp_enqueue_script( 'swiper', BASE_URI . '/js/swiper.min.js', array( 'jquery'), false, true );
   wp_enqueue_script( 'waypoint', BASE_URI . '/js/jquery.waypoints.min.js', array( 'jquery'), false, true );
+  wp_enqueue_script( 'isotope', BASE_URI . '/js/isotope.pkgd.min.js', array( 'jquery'), false, true );
   wp_enqueue_script( 'retina', BASE_URI . '/js/retina.min.js', array('jquery'), false, true );
   wp_enqueue_script( 'main', BASE_URI . '/js/main.js', array( 'jquery'), '1.0.0', true );
 }

@@ -511,7 +511,7 @@ $(document).ready(function() {
 
 function initSub() {  
   if($('.' + PAGE_PRODUCT_LIST).length > 0) { // PROJECT LIST 페이지인 경우 
-    $.getJSON('data/content.json', initGallery);
+    $.getJSON(BASE_URI + '/data/content.json', initGallery);
   }
   if($('.' + PAGE_PRODUCT_DETAIL).length > 0) {
     initProjectDetail();
