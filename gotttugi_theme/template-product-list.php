@@ -15,7 +15,7 @@
 $current_id = get_the_ID();
 ?>
 <div
-	data-href="/product_detail.html" 
+	data-href="<?php the_permalink(); ?>" 
 	class="js-href product_list__item l_product_list__item s_product_list__item 
 				<?php echo ( esc_html( get_post_meta( $current_id, 'sortingClass', true ) ) ); ?>
 				"

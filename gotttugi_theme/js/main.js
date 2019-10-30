@@ -46,7 +46,6 @@ $(document).ready(function() {
 	var BASE_URI = $('#uri_info').data('base_uri'); 
 	var ROOT_URI = $('#uri_info').data('root_uri');
 	
-	var productListCurrentPage = 1;
 	var productListNextPage = 2;
 	var productPerPage = 4;
 
@@ -250,7 +249,12 @@ $(document).ready(function() {
 
   function hrefHandler() {
     var href = $(this).attr('data-href');
-    var home_url; 
+		var home_url; 
+		
+		if(href.indexOf('http') != -1) {
+			location.href = href;
+			return;
+		}
 
     if(location.href.indexOf('rahata.dothome.co.kr') !== -1) {
       home_url = location.origin + '/gotttugi';
@@ -527,12 +531,32 @@ function initSub() {
 }
 
 function initGallery(){
-  $(window).on('scroll', galleryScroll);
+	$grid = $('.product_list__list').isotope({
+		itemSelector: '.product_list__item',
+		masonry: {
+			columnWidth: 276,
+			isFitWidth: true
+		},
+		getSortData: {
+			popular: '[data-popular]',
+			views: '[data-views]',
+			recent: '[data-recent]'
+		}
+	});
+
+	// 필터 버튼들은 아이템 로드가 끝난 다음 누를 수 있다. 
+	$('.product_filter_button').on('click', filterButtonClicked);
+	$('.product_list__header__sort__button').on('click', sortButtonClicked);
+
+	// 스크롤 할 때마다 다음 페이지 아이템 가져와서 넣어주기. 
+	$(window).on('scroll', galleryScroll);
+	
+	$('.l_product_list_loading').hide();
 }
 
 function galleryScroll(e) {
   if($(window).scrollTop() === $(document).height() - $(window).height() ) {
-    addItems();
+    showMoreProducts();
   }  
 }
 
@@ -545,74 +569,57 @@ function shuffleArray(array) {
   }
 }
 
-function addItems(){
-  var elements = [];
-	
-	if( productListNextPage > productListCurrentPage) {
-		$.ajax({
-			url: ROOT_URI + '/wp-json/wp/v2/products',
-			type: 'GET',
-			data: { 
-				page: productListPage, 
-				per_page: productPerPage
-			}
-		}).done(function(data) {
-			console.log(data);
-			productListCurrentPage++;
-			if(data.length === productPerPage) {
-				productListNextPage++;
-				productListPage++;
-			}
-		});
-	}
+function showMoreProducts(){
+	$('.l_product_list_loading').show();
+	$.ajax({
+		url: ROOT_URI + '/wp-json/wp/v2/products',
+		type: 'GET',
+		data: { 
+			page: productListNextPage, 
+			per_page: productPerPage,
+			_embed: true
+		}
+	}).done(function(data) {
+		if(data.length > 0) {
+			addItems(data);
+			productListNextPage++;
+		} else {
+			$('.l_product_list_loading').hide();
+		}
+	}).fail(function() {
+		$('.l_product_list_loading').hide();
+	});
+}
 
+function addItems(data) {
+	var elements = [];
+	$.each(data, function(i, item){
+		var itemHtml = '<div' + 
+			' data-href="' + item.link + '"' + 
+			' class="js-href product_list__item l_product_list__item s_product_list__item ' + 
+							item.sortingClass  + '"' +
+			' data-popular="'+ item.popular + '"' +
+			' data-recent="'+ item.recent +'"' + 
+			' data-views="'+ item.views +'"' + 
+		'>' +
+			'<img' + 
+				' src="' + item._embedded['wp:featuredmedia']['0'].source_url + '"' + 
+				' alt="' + item.title.rendered + '"' +
+				' class="l_product_list__item__contents__image s_product_list__item__contents__image"' +
+			'/>' +
+			'<h4 class=" s_product_list__item__contents__title">' +
+				item.title.rendered +
+			'</h4>' +
+		'</div>';
+		elements.push($(itemHtml).get(0));
+	});
 
-	
+	$('.product_list__list').append(elements);
+	$grid.isotope( 'appended', elements );
 
-    if(slicedData.length > 0) {
-      $('.l_product_list_loading').show();
-      setTimeout(function() {
-        $.each(slicedData, function(i, item){
-          var itemHtml = 
-          '<div data-href="/product_detail.html" class="js-href product_list__item l_product_list__item s_product_list__item ' + (item['js-big'] ? 'js-big ' : '') + item.sortingClass  +  '" data-popular="'+ item.popular +'" data-recent="'+ item.recent +'" data-views="'+ item.views +'">' +
-            '<img src="' + item.image + '" alt="' + item.title + '" class="l_product_list__item__contents__image s_product_list__item__contents__image">' +
-            '<h4 class=" s_product_list__item__contents__title">' +
-            item.title +
-            '</h4>' +
-          '</div>';
-          elements.push($(itemHtml).get(0));
-        }); //slicedData item 마다 할일
-    
-        // 맨 처음에는 아이템을 넣어두고 isotope를 돌린다.
-        if (!$grid) {
-          $('.product_list__list').append(elements);
-          $grid = $('.product_list__list').isotope({
-            itemSelector: '.product_list__item',
-            masonry: {
-              columnWidth: 276,
-              isFitWidth: true
-            },
-            getSortData: {
-              popular: '[data-popular]',
-              views: '[data-views]',
-              recent: '[data-recent]'
-            }
-          });
+	$(elements).on('click', hrefHandler);
 
-          // 필터 버튼들은 아이템 로드가 끝난 다음 누를 수 있다. 
-          $('.product_filter_button').on('click', filterButtonClicked);
-          $('.product_list__header__sort__button').on('click', sortButtonClicked);
-
-        } else { // 이미 isotope 가 있는 경우 append 메소드를 사용. 
-          $('.product_list__list').append(elements);
-          $grid.isotope( 'appended', elements );
-        }
-
-        $(elements).on('click', hrefHandler);
-    
-        $('.l_product_list_loading').hide();
-      }, 500);
-    }    
+	$('.l_product_list_loading').hide();
 }
 
 function filterButtonClicked() {
