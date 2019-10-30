@@ -119,7 +119,7 @@
   }
 ?>
 >     
-<div id="base_uri" class="hidden" data-base_uri="<?php echo BASE_URI ?>"></div>
+<div id="uri_info" class="hidden" data-base_uri="<?php echo BASE_URI ?>" data-root_uri="<?php echo get_site_url();?>"></div>
 <a href="#content" class="skip_navigation"><span>컨텐츠 바로가기</span></a>
 <header class="container">
   <h1>

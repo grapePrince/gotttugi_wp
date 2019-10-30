@@ -43,7 +43,12 @@ $(document).ready(function() {
 
   var weatherData = {};
 
-  var BASE_URI = $('#base_uri').data('base_uri'); 
+	var BASE_URI = $('#uri_info').data('base_uri'); 
+	var ROOT_URI = $('#uri_info').data('root_uri');
+	
+	var productListCurrentPage = 1;
+	var productListNextPage = 2;
+	var productPerPage = 4;
 
   if ($(document.body).hasClass('main')) {
     initMain();
@@ -511,7 +516,7 @@ $(document).ready(function() {
 
 function initSub() {  
   if($('.' + PAGE_PRODUCT_LIST).length > 0) { // PROJECT LIST 페이지인 경우 
-    $.getJSON(BASE_URI + '/data/content.json', initGallery);
+    initGallery();
   }
   if($('.' + PAGE_PRODUCT_DETAIL).length > 0) {
     initProjectDetail();
@@ -521,15 +526,14 @@ function initSub() {
   }
 }
 
-function initGallery(data){
-  shuffleArray(data);
-  $('.s_product_list__header__desc__em').text(data.length);
-  setTimeout(function() {
-    //모든 리스트를 alldata 저장  
-    galleryData = data;    
+function initGallery(){
+  $(window).on('scroll', galleryScroll);
+}
+
+function galleryScroll(e) {
+  if($(window).scrollTop() === $(document).height() - $(window).height() ) {
     addItems();
-    $(window).on('scroll', galleryScroll);
-  }, 1000);
+  }  
 }
 
 function shuffleArray(array) {
@@ -541,17 +545,29 @@ function shuffleArray(array) {
   }
 }
 
-
-function galleryScroll(e) {
-  if($(window).scrollTop() === $(document).height() - $(window).height() ) {
-    addItems();
-  }  
-}
-
-
 function addItems(){
-    var elements = [],  
-        slicedData = galleryData.slice(currentIndex, currentIndex += addItemCount);
+  var elements = [];
+	
+	if( productListNextPage > productListCurrentPage) {
+		$.ajax({
+			url: ROOT_URI + '/wp-json/wp/v2/products',
+			type: 'GET',
+			data: { 
+				page: productListPage, 
+				per_page: productPerPage
+			}
+		}).done(function(data) {
+			console.log(data);
+			productListCurrentPage++;
+			if(data.length === productPerPage) {
+				productListNextPage++;
+				productListPage++;
+			}
+		});
+	}
+
+
+	
 
     if(slicedData.length > 0) {
       $('.l_product_list_loading').show();
