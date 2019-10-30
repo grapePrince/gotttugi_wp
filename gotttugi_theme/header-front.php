@@ -110,10 +110,6 @@
 			href="<?php echo( esc_url( BASE_URI . '/images/favicon/favicon-16x16.png' ) ); ?>"
 		/>
 
-		<link 
-			rel="manifest" 
-			href="<?php echo( esc_url( BASE_URI . '/images/favicon/manifest.json' ) ); ?>"
-		/>
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta
 			name="msapplication-TileImage"
