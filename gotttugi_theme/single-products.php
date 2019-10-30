@@ -74,146 +74,6 @@ get_header( 'sub' );
 	</div>
 </section>
 
-<section id="content" class="product_filter l_product_filter">
-	<div class="l_product_filter_buttons">
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".all">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div class="s_product_filter_button__text">ALL</div>
-			</div>
-			<h4 class="s_product_filter_button__title">전체</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".source">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--1"
-				>
-					소스아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">소스</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".condiment">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--2"
-				>
-					분말/건조아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">분말/건조</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".retort">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--3"
-				>
-					레토르트아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">레토르트</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".fridge">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--4"
-				>
-					냉장/냉동아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">냉장/냉동</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".agriculture">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--5"
-				>
-					농/축/수산아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">농/축/수산</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".tea">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--6"
-				>
-					차종류아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">차종류</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".butter">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--7"
-				>
-					버터/식용유아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">버터/식용유</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".flavor">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--8"
-				>
-					향신료아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">향신료</h4>
-		</div> 
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".ramen">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--9"
-				>
-					라면아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">라면</h4>
-		</div>
-		<div class="product_filter_button l_product_filter_button s_product_filter_button" data-filter=".wheat">
-			<div
-				class="l_product_filter_button__circle s_product_filter_button__circle"
-			>
-				<div
-					class="s_product_filter_button__icon s_product_filter_button__icon--10"
-				>
-					곡류아이콘
-				</div>
-			</div>
-			<h4 class="s_product_filter_button__title">곡류</h4>
-		</div>
-	</div>
-	<div class="product_filter__search l_product_filter__search">
-		<div class="m_search_input s_product_filter__search__input">
-			<input class="m_search_input__input s_product_filter__search__input__input" type="text" placeholder="검색어를 입력하세요" />
-			<span class="m_search_input__line s_product_filter__search__input__line"></span>
-			<input class="m_search_input__button search_button" type="button" value="검색" />
-		</div>
-	</div>
-</section>
-
 <section class="product_details l_product_details s_product_details container">
 	<div class="l_product_details__back s_product_details_back">
 		<div class="s_product_details_back__icon">로고</div>
@@ -229,19 +89,28 @@ get_header( 'sub' );
 				<div class="perspective">
 					<div class="cube">
 						<div class="front">
-							<img 
+							<img
 								src="<?php echo( esc_url( BASE_URI . '/images/product_main_1.png' ) ); ?>"
 								alt="진라면앞모습"
 							>
 						</div>
 						<div class="back">
-							<img src="images/product_main_3.png" alt="진라면옆모습">
+							<img
+								src="<?php echo( esc_url( BASE_URI . '/images/product_main_3.png' ) ); ?>"
+								alt="진라면옆모습"
+							>
 						</div>
 						<div class="left side">
-							<img src="images/product_main_2.png" alt="진라면왼쪽모습">
+							<img
+								src="<?php echo( esc_url( BASE_URI . '/images/product_main_2.png' ) ); ?>"
+								alt="진라면왼쪽모습"
+							>
 						</div>
 						<div class="right side">
-							<img src="images/product_main_4.png" alt="진라면오른쪽모습">
+							<img
+								src="<?php echo( esc_url( BASE_URI . '/images/product_main_4.png' ) ); ?>"
+								alt="진라면오른쪽모습"
+							>
 						</div>
 					</div>
 				</div>
@@ -354,7 +223,7 @@ get_header( 'sub' );
 				data-autoplay
 				muted
 				loop
-				poster="images/corporation_thumnail_2.jpg"
+				poster="<?php echo( esc_url( BASE_URI . '/images/corporation_thumnail_2.jpg' ) ); ?>"
 			>
 				<source src="https://res.cloudinary.com/dsgbmcrq7/video/upload/v1564031413/corporation_2_tngco7.ogv" type="video/ogv" />
 				<source src="https://res.cloudinary.com/dsgbmcrq7/video/upload/v1564031419/corporation_2_b7uhyr.mp4" type="video/mp4" />
@@ -372,13 +241,24 @@ get_header( 'sub' );
 		<h2 class="l_product_others__title s_product_others__title">이런 제품은 어떠세요?</h2>
 		<div class="l_product_others__items">
 			<div class="l_product_others__image js-href" data-href="/product_detail.html">
-				<img src="images/others_1.png" alt="전복죽" class="product_others__item">
+				<img
+					src="<?php echo( esc_url( BASE_URI . '/images/others_1.png' ) ); ?>"
+					alt="전복죽" 
+					class="product_others__item">
 			</div>
 			<div class="l_product_others__image js-href" data-href="/product_detail.html">
-				<img src="images/others_2.png" alt="진쫄" class="product_others__item">
+				<img 
+					src="<?php echo( esc_url( BASE_URI . '/images/others_2.png' ) ); ?>"
+					alt="진쫄" 
+					class="product_others__item"
+				>
 			</div>
 			<div class="l_product_others__image js-href" data-href="/product_detail.html">
-				<img src="images/others_3.png" alt="컵피자" class="product_others__item">
+				<img
+					src="<?php echo( esc_url( BASE_URI . '/images/others_3.png' ) ); ?>"
+					alt="컵피자" 
+					class="product_others__item"
+				>
 			</div>
 		</div>
 	</div>

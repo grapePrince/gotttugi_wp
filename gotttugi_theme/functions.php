@@ -24,7 +24,10 @@ function load_scripts() {
 	wp_enqueue_script( 'swiper', BASE_URI . '/js/swiper.min.js', array( 'jquery' ), '4.5.0', true );
 	wp_enqueue_script( 'waypoint', BASE_URI . '/js/jquery.waypoints.min.js', array( 'jquery' ), '4.0.1', true );
 	wp_enqueue_script( 'isotope', BASE_URI . '/js/isotope.pkgd.min.js', array( 'jquery' ), '3.0.6', true );
-	wp_enqueue_script( 'retina', BASE_URI . '/js/retina.min.js', array( 'jquery' ), '1.3.0', true );
+	wp_enqueue_script( 'smoothscroll', BASE_URI . '/js/jquery.smooth-scroll.min.js', array( 'jquery' ), '1.4.12', true );
+	wp_enqueue_script( 'animatenumber', BASE_URI . '/js/jquery.animateNumber.min.js', array( 'jquery' ), '0.0.14', true );
+	wp_enqueue_script( 'jqueryui', BASE_URI . '/js/jquery-ui-1.12.1.min.js', array( 'jquery' ), '1.12.1', true );
+
 	wp_enqueue_script( 'main', BASE_URI . '/js/main.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'load_scripts' );

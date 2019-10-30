@@ -73,8 +73,7 @@
 		<link
 			rel="apple-touch-icon"
 			sizes="144x144"
-			href="<?php echo( esc_url( BASE_URI . '/images/favicon/apple-icon-144x144.png' ) ); ?>"
-			href="images/favicon/apple-icon-144x144.png"
+			href="<?php echo( esc_url( BASE_URI . '/images/favicon/android-icon-144x144.png' ) ); ?>"
 		/>
 		<link
 			rel="apple-touch-icon"
@@ -283,22 +282,22 @@
 		<div class="background">
 			<img
 				class="corporation"
-				src="<?php echo( esc_url( BASE_URI . '/images/favicon/header_corporation.png' ) ); ?>"
+				src="<?php echo( esc_url( BASE_URI . '/images/header_corporation.png' ) ); ?>"
 				alt="header_corporation"
 			/>
 			<img
 				class="products"
-				src="<?php echo( esc_url( BASE_URI . '/images/favicon/header_products.png' ) ); ?>"
+				src="<?php echo( esc_url( BASE_URI . '/images/header_products.png' ) ); ?>"
 				alt="header_products"
 			/>
 			<img
 				class="recipe"
-				src="<?php echo( esc_url( BASE_URI . '/images/favicon/header_recipe.png' ) ); ?>"
+				src="<?php echo( esc_url( BASE_URI . '/images/header_recipe.png' ) ); ?>"
 				alt="header_recipe"
 			/>
 			<img
 				class="media"
-				src="<?php echo( esc_url( BASE_URI . '/images/favicon/header_media.png' ) ); ?>"
+				src="<?php echo( esc_url( BASE_URI . '/images/header_media.png' ) ); ?>"
 				alt="header_media"
 			/>
 			<div class="sprites close">닫기</div>
