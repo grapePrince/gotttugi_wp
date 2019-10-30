@@ -124,7 +124,7 @@ register_taxonomy_for_object_type( 'product_category', 'products' );
  * @return data
  */
 function rest_prepare_products( $data, $post, $request ) {
-	$_data                 = $data->data;	
+	$_data                 = $data->data;
 	$_data['sortingClass'] = get_post_meta( $post->ID, 'sortingClass', true );
 	$_data['popular']      = get_post_meta( $post->ID, 'popular', true );
 	$_data['recent']       = get_post_meta( $post->ID, 'recent', true );
