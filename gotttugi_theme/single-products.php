@@ -12,7 +12,11 @@
 
 define( 'CURRENT_PAGE', 'product_detail' );
 get_header( 'sub' );
-?>
+
+while ( have_posts() ) {
+	the_post();
+	?>
+
 <section class="s_breadscrum breadscrum">
 	<h2 class="hidden">현재경로</h2>
 	<div class="l_breadscrum__items container">
@@ -78,61 +82,86 @@ get_header( 'sub' );
 	<div class="l_product_details__back s_product_details_back">
 		<div class="s_product_details_back__icon">로고</div>
 	</div>
+
 	<div class="l_product_details__header">
-		<div class="l_product_details__header__title s_product_details__header__title">진라면 매운맛</div>
+		<div class="l_product_details__header__title s_product_details__header__title">
+			<?php the_title(); ?>
+		</div>
 		<div class="l_product_details__header__line s_product_details__header__line hidden_text">-</div>
-		<div class="s_product_details__header__breadcrums">라면류 &gt; 진라면 매운맛</div>
+		<div class="s_product_details__header__breadcrums">
+			<?php the_field( 'sortingClassLabel' ); ?>
+		</div>
 	</div>
 	<div class="l_product_details__main">
-		<div class="l_product_details__main__left s_product_details__main__left">
-			<div class="l_product_details__main__left__image">
-				<div class="perspective">
-					<div class="cube">
-						<div class="front">
-							<img
-								src="<?php echo( esc_url( BASE_URI . '/images/product_main_1.png' ) ); ?>"
-								alt="진라면앞모습"
-							>
-						</div>
-						<div class="back">
-							<img
-								src="<?php echo( esc_url( BASE_URI . '/images/product_main_3.png' ) ); ?>"
-								alt="진라면옆모습"
-							>
-						</div>
-						<div class="left side">
-							<img
-								src="<?php echo( esc_url( BASE_URI . '/images/product_main_2.png' ) ); ?>"
-								alt="진라면왼쪽모습"
-							>
-						</div>
-						<div class="right side">
-							<img
-								src="<?php echo( esc_url( BASE_URI . '/images/product_main_4.png' ) ); ?>"
-								alt="진라면오른쪽모습"
-							>
+		<div class="l_product_details__main__left s_product_details__main__left">			
+			<?php
+			if ( the_title( '', '', false ) === '진라면' ) {
+				?>
+				<div class="l_product_details__main__left__image">
+					<div class="perspective">
+						<div class="cube">
+							<div class="front">
+								<img
+									src="<?php echo( esc_url( BASE_URI . '/images/product_main_1.png' ) ); ?>"
+									alt="진라면앞모습"
+								>
+							</div>
+							<div class="back">
+								<img
+									src="<?php echo( esc_url( BASE_URI . '/images/product_main_3.png' ) ); ?>"
+									alt="진라면옆모습"
+								>
+							</div>
+							<div class="left side">
+								<img
+									src="<?php echo( esc_url( BASE_URI . '/images/product_main_2.png' ) ); ?>"
+									alt="진라면왼쪽모습"
+								>
+							</div>
+							<div class="right side">
+								<img
+									src="<?php echo( esc_url( BASE_URI . '/images/product_main_4.png' ) ); ?>"
+									alt="진라면오른쪽모습"
+								>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="l_product_details__main__left__desc">
-				<div class="l_product_details__main__left__text s_product_details__main__left__text">돌리려면클릭</div>
-				<div class="product_details__main__left__icon s_product_details__main__left__icon">회전아이콘</div>
-			</div>
+				<div class="l_product_details__main__left__desc">
+					<div class="l_product_details__main__left__text s_product_details__main__left__text">돌리려면클릭</div>
+					<div class="product_details__main__left__icon s_product_details__main__left__icon">회전아이콘</div>
+				</div>
+				<?php
+			} else {
+				?>
+				<div class="l_product_details__main__left__image">
+					<img
+						src="<?php echo ( esc_html( the_post_thumbnail_url() ) ); ?>" 
+						alt="상품이미지"
+					>
+				</div>
+				<?php
+			}
+			?>
 		</div>
 		<div class="l_product_details__main__right">
-			<p class="l__product_details__main__right__desc s__product_details__main__right__desc">
-					1988년 3월, 오래 우려낸 깊고 진한 국물을 좋아하는 한국인의 입맛을 고려하여 출시된, 국물이 <em>'진'</em>한 라면 오뚜기 진라면.<br>
-					깊고 진한 국물맛은 기본, 쫄깃한 면발과 함께 순한맛과 매운 맛을 선택할 수 있는 장점으로 출시부터 지금까지 <em>남녀노소 모두가 사랑하는 대한민국 대표 라면</em>입니다.<br> 
-					풍부한 야채 건더기와 얼큰하고 구수한 맛을 온가족이 함께 즐겨보시기 바랍니다. 
-			</p>
+			<div class="l__product_details__main__right__desc s__product_details__main__right__desc">
+				<?php the_content(); ?>
+			</div>
 			<div class="l__product_details__main__right__attrs">
 				<div class="l__product_details__main__right__attr">
 					<div class="s__product_details__main__right__attr__icon--weight">
 						중량
 					</div>
 					<h4 class="l__product_details__main__right__attr__text s__product_details__main__right__attr__text">
-						중량: <span class="product_details__main__right__attr" data-number="120">0</span> g
+						중량: 
+						<span 
+							class="product_details__main__right__attr" 
+							data-number="<?php the_field( 'weight' ); ?>"
+						>
+							0
+						</span>
+						g
 					</h4>
 				</div>
 				<div class="l__product_details__main__right__attr">
@@ -140,15 +169,38 @@ get_header( 'sub' );
 						열량
 					</div>
 					<h4 class="l__product_details__main__right__attr__text s__product_details__main__right__attr__text">
-						열량: <span class="product_details__main__right__attr" data-number="500">0</span> kcal
+						열량: 
+						<span 
+							class="product_details__main__right__attr" 
+							data-number="<?php the_field( 'kcal' ); ?>"
+						>
+							0
+						</span>
+						kcal
 					</h4>
 				</div>
 				<div class="l__product_details__main__right__attr">
 					<div class="s__product_details__main__right__attr__icon--calendar">
 						출시일
 					</div>
-					<h4 class="l__product_details__main__right__attr__text s__product_details__main__right__attr__text">
-						출시일: <span class="product_details__main__right__attr" data-number="1988">0</span>.<span class="product_details__main__right__attr" data-number="3">3</span>
+					<h4 
+						class="l__product_details__main__right__attr__text 
+										s__product_details__main__right__attr__text"
+					>
+						출시일: 
+						<span 
+							class="product_details__main__right__attr" 
+							data-number="<?php the_field( 'releaseYear' ); ?>"
+						>
+							0
+						</span>
+						.
+						<span 
+							class="product_details__main__right__attr"
+							data-number="<?php the_field( 'releaseMonth' ); ?>"
+						>
+							0
+						</span>
 					</h4>
 				</div>
 			</div>
@@ -163,12 +215,7 @@ get_header( 'sub' );
 				</div>
 				<div class="l__product_details__main__right__origin__contents s__product_details__main__right__origin__contents">
 					<p class="l__product_details__main__right__origin__content s__product_details__main__right__origin__content">
-						면:소맥분(밀:호주산,미국산),변성전분,팜유(말레이시아산),감자전분(외국산:덴마크,프랑스,독일 등),글루텐,정제소금,유화유지,난각분말,육수추출농축액,마늘시즈닝,이스트엑기스,면류첨가알칼리제(산도조절제),구아검,비타민B2,녹차풍미유<br><br>
-						스프류:정제소금,백설탕,포도당,복합양념분말,숙성마늘맛분,간장분말,볶음양념분말,육수맛분말,마늘농축조미분,고추맛베이스,로스팅맛분말,쇠고기육수분말,조미육수분말,참맛양념분말,발효복합분,진한감칠맛분,후추분말,칠리맛분말,고춧가루,감칠맛분말,참맛버섯양념분말,버섯야채조미분말,오뚜기참치간장분말,감칠맛베이스,로스팅조미분말,맛베이스,향미증진제,볶음마늘분,육수맛조미분,육수추출농축분말,참맛효모조미분말,숙성양념분말,칠리추출물,구아검,칠리혼합추출물,산도조절제,고추농축소스,조미쇠고기맛후레이크,건당근,건청경채,건파,건표고버섯,건고추입자<br>
-						<br>
-						<em>[밀,대두,계란,돼지고기 함유]</em><br>
-						<br>
-						이 제품은 <em>돼지고기,메밀,오징어,새우,게,고등어,땅콩, 조개류(굴,홍합포함)</em> 성분을 사용한 제품과 같은 제조시설에서 제조하고 있습니다.
+						<?php the_field( 'resourceInfo' ); ?>
 					</p>
 				</div>
 			</div>
@@ -217,24 +264,30 @@ get_header( 'sub' );
 		</table>
 		<p class="l_product_details__nutrition__desc s_product_details__nutrition__desc">% 영양성분 기준치 : 1일 영양성분 기준치에 대한 비율</p>
 	</div>
-	<div class="l_product_details__video">
-		<div class="s_product_details__video video__container">
-			<video
-				data-autoplay
-				muted
-				loop
-				poster="<?php echo( esc_url( BASE_URI . '/images/corporation_thumnail_2.jpg' ) ); ?>"
-			>
-				<source src="https://res.cloudinary.com/dsgbmcrq7/video/upload/v1564031413/corporation_2_tngco7.ogv" type="video/ogv" />
-				<source src="https://res.cloudinary.com/dsgbmcrq7/video/upload/v1564031419/corporation_2_b7uhyr.mp4" type="video/mp4" />
-				<source src="https://res.cloudinary.com/dsgbmcrq7/video/upload/v1564031485/corporation_2_mkwplr.webm" type="video/webm" />
-				
-				<span>이 브라우저는 video요소를 지원하지 않습니다.</span>
-			</video>
-			<div class="video__background hidden_text">마우스오버배경</div>
-			<span class="video__icon sprites search_button">크게보기아이콘</span>
+	<?php
+	if ( get_field( 'videoThumbnailLink' ) ) {
+		?>
+		<div class="l_product_details__video">
+			<div class="s_product_details__video video__container">
+				<video
+					data-autoplay
+					muted
+					loop
+					poster="<?php the_field( 'videoThumbnailLink' ); ?>"
+				>
+					<source src="<?php the_field( 'videoLinkOGV' ); ?>" type="video/ogv" />
+					<source src="<?php the_field( 'videoLinkMP4' ); ?>" type="video/mp4" />
+					<source src="<?php the_field( 'videoLinkWEBM' ); ?>" type="video/webm" />
+					
+					<span>이 브라우저는 video요소를 지원하지 않습니다.</span>
+				</video>
+				<div class="video__background hidden_text">마우스오버배경</div>
+				<span class="video__icon sprites search_button">크게보기아이콘</span>
+			</div>
 		</div>
-	</div>
+		<?php
+	}
+	?>
 </section>
 <section class="product_others s_product_others">
 	<div class="l_product_others__container container">
@@ -264,6 +317,8 @@ get_header( 'sub' );
 	</div>
 </section>
 
-<?php
+	<?php
+}
+
 get_footer( 'sub' );
 ?>

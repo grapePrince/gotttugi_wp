@@ -117,6 +117,12 @@ add_action( 'init', 'create_products_category' );
 // post type 과 post type category 를 연결해준다.
 register_taxonomy_for_object_type( 'product_category', 'products' );
 
+
+// 사이트 전체에서 썸네일(특성이미지)를 이용 가능하게 설정.
+add_theme_support( 'post-thumbnails' );
+
+
+
 /**
  * Post를 Rest API 로 가져갈 때 Custom field 것도 가져가게 한다.
  *
@@ -126,18 +132,3 @@ register_taxonomy_for_object_type( 'product_category', 'products' );
  *
  * @return data
  */
-function rest_prepare_products( $data, $post, $request ) {
-	$_data                 = $data->data;
-	$_data['sortingClass'] = get_post_meta( $post->ID, 'sortingClass', true );
-	$_data['popular']      = get_post_meta( $post->ID, 'popular', true );
-	$_data['recent']       = get_post_meta( $post->ID, 'recent', true );
-	$_data['views']        = get_post_meta( $post->ID, 'views', true );
-	$data->data            = $_data;
-
-	return $data;
-}
-add_filter( 'rest_prepare_products', 'rest_prepare_products', 10, 3 );
-
-
-// 사이트 전체에서 썸네일(특성이미지)를 이용 가능하게 설정.
-add_theme_support( 'post-thumbnails' );
