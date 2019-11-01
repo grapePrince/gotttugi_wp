@@ -121,17 +121,6 @@ register_taxonomy_for_object_type( 'product_category', 'products' );
 // 사이트 전체에서 썸네일(특성이미지)를 이용 가능하게 설정.
 add_theme_support( 'post-thumbnails' );
 
-/**
- * Contact-form-cfdb 7 플러그인을 수동으로 켜준다.
- *
- * @return void
- */
-function activate_plugin_via_php() {
-	$active_plugins = get_option( 'active_plugins' );
-	array_push( $active_plugins, 'contact-form-cfdb7/contact-form-cfdb-7.php' );
-	update_option( 'active_plugins', $active_plugins );
-}
-add_action( 'init', 'activate_plugin_via_php' );
 
 /**
  * REST API 를 준비할 때 custom field 정보를 넘겨준다.
@@ -163,5 +152,3 @@ function rest_prepare_products( $data, $post, $request ) {
 	return $data;
 }
 add_filter( 'rest_prepare_products', 'rest_prepare_products', 10, 3 );
-
-
