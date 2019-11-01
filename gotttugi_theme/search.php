@@ -1,8 +1,6 @@
 <?php
 /**
- * Template Name: Product List
- *
- * Product List Page.
+ * Search Result Page.
  * php version 7.3.11
  *
  * @category Page
@@ -12,7 +10,7 @@
  * @link     http://rahata1.dothome.co.kr
  */
 
-define( 'CURRENT_PAGE', 'product_list' );
+define( 'CURRENT_PAGE', 'search_result' );
 get_header( 'sub' );
 ?>
 
@@ -229,21 +227,12 @@ get_header( 'sub' );
 	</div>
 </section>
 
-<?php
-	$query = new WP_Query(
-		array(
-			'post_type'      => 'products',
-			'posts_per_page' => 4,
-		)
-	);
-	?>
-
 <section class="product_list container">
 	<h2 class="hidden">상품목록</h2>
 	<div class="l_product_list__header">
 		<div class="s_product_list__header__desc">
 			총 <em class="s_product_list__header__desc__em">
-			<?php echo ( esc_html( $query->found_posts ) ); ?>
+			<?php echo ( esc_html( $wp_query->found_posts ) ); ?>
 			</em>건의 제품이 있습니다.
 		</div>
 		<div class="l_product_list__header__sort">
@@ -254,18 +243,11 @@ get_header( 'sub' );
 	</div>
 	<div class="product_list__list l_product_list__list s_product_list__list">     
 	<?php
-	while ( $query->have_posts() ) {
-		$query->the_post();
+	while ( $wp_query->have_posts() ) {
+		$wp_query->the_post();
 		get_template_part( 'template-product-list' );
 	}
 	?>
-	</div>
-	<div class="l_product_list_loading">
-		<img
-			src="<?php echo( esc_url( BASE_URI . '/images/loading.gif' ) ); ?>"
-			alt="" 
-			class="s_product_list_loading__image"
-		>
 	</div>
 </section>
 

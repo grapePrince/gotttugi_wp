@@ -184,9 +184,18 @@
 			>오뚜기 몰로 가기</a
 		>
 		<div class="search_input">
-			<input type="text" />
-			<span></span>
-			<input type="button" class="sprites search_button" value="검색" />
+			<form method="get" action="<?php bloginfo( 'url' ); ?>">
+				<input 
+					type="text" 
+					name="s"
+				/>
+				<span></span>
+				<input 
+					class="sprites search_button" 
+					type="button" 
+					value="검색" 
+				/>
+			</form>
 		</div>
 	</div>
 	<nav>

@@ -137,6 +137,8 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 	body_class( 'sub js-product_list' );
 } elseif ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_detail' ) {
 	body_class( 'sub js-product_detail' );
+} elseif ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'search_result' ) {
+	body_class( 'sub js-search_result' );
 } else {
 	body_class( 'sub' );
 }
@@ -287,10 +289,19 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 			</div>
 		</div>
 		<div class="search_input">
-			<input type="text" />
-			<span></span>
-			<input type="button" class="sprites search_button" value="검색" />
-		</div>
+			<form method="get" action="<?php bloginfo( 'url' ); ?>">
+				<input 
+					type="text" 
+					name="s"
+				/>
+				<span></span>
+				<input 
+					class="sprites search_button" 
+					type="button" 
+					value="검색" 
+				/>
+			</form>
+		</div>		
 	</div>  
 </header>
 

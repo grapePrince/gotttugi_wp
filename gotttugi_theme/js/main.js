@@ -20,7 +20,8 @@ $(document).ready(function() {
   var underTabletWidth = $(window).outerWidth() <= TABLET_WIDTH ? true : false;
 
   var PAGE_PRODUCT_LIST = 'js-product_list';
-  var PAGE_PRODUCT_DETAIL = 'js-product_detail';
+	var PAGE_PRODUCT_DETAIL = 'js-product_detail';
+	var PAGE_SEARCH_RESULT = 'js-search_result';
   var PAGE_FACTORY = 'js-factory';
 
   var galleryData = [];
@@ -519,7 +520,7 @@ $(document).ready(function() {
   }
 
 function initSub() {  
-  if($('.' + PAGE_PRODUCT_LIST).length > 0) { // PROJECT LIST 페이지인 경우 
+  if($('.' + PAGE_PRODUCT_LIST).length > 0 ||  $('.' + PAGE_SEARCH_RESULT).length > 0) { // PROJECT LIST 페이지인 경우 
     initGallery();
   }
   if($('.' + PAGE_PRODUCT_DETAIL).length > 0) {
@@ -548,10 +549,13 @@ function initGallery(){
 	$('.product_filter_button').on('click', filterButtonClicked);
 	$('.product_list__header__sort__button').on('click', sortButtonClicked);
 
-	// 스크롤 할 때마다 다음 페이지 아이템 가져와서 넣어주기. 
-	$(window).on('scroll', galleryScroll);
-	
 	$('.l_product_list_loading').hide();
+
+	if(	$('.' + PAGE_PRODUCT_LIST).length > 0) { // SEARCH_RESULT 일 때에는 스크롤 동작을 하지 않는다.
+		// 스크롤 할 때마다 다음 페이지 아이템 가져와서 넣어주기. 
+		$(window).on('scroll', galleryScroll);	
+	}	
+
 }
 
 function galleryScroll(e) {
