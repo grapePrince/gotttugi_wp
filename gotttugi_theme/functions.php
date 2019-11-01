@@ -121,14 +121,47 @@ register_taxonomy_for_object_type( 'product_category', 'products' );
 // 사이트 전체에서 썸네일(특성이미지)를 이용 가능하게 설정.
 add_theme_support( 'post-thumbnails' );
 
-
+/**
+ * Contact-form-cfdb 7 플러그인을 수동으로 켜준다.
+ *
+ * @return void
+ */
+function activate_plugin_via_php() {
+	$active_plugins = get_option( 'active_plugins' );
+	array_push( $active_plugins, 'contact-form-cfdb7/contact-form-cfdb-7.php' );
+	update_option( 'active_plugins', $active_plugins );
+}
+add_action( 'init', 'activate_plugin_via_php' );
 
 /**
- * Post를 Rest API 로 가져갈 때 Custom field 것도 가져가게 한다.
+ * REST API 를 준비할 때 custom field 정보를 넘겨준다.
  *
- * @param Response $data Response object.
- * @param Post     $post post object.
- * @param Request  $request request object.
+ * @param Response $data 응답 데이터.
+ * @param Post     $post 포스트 데이터.
+ * @param Request  $request 리퀘스트 데이터.
  *
  * @return data
  */
+function rest_prepare_products( $data, $post, $request ) {
+	$_data = $data->data;
+
+	$_data['sortingClass']      = get_post_meta( $post->ID, 'sortingClass', true );
+	$_data['popular']           = get_post_meta( $post->ID, 'popular', true );
+	$_data['recent']            = get_post_meta( $post->ID, 'recent', true );
+	$_data['views']             = get_post_meta( $post->ID, 'views', true );
+	$_data['sortingClassLabel'] = get_post_meta( $post->ID, 'sortingClassLabel', true );
+	$_data['weight']            = get_post_meta( $post->ID, 'weight', true );
+	$_data['kcal']              = get_post_meta( $post->ID, 'kcal', true );
+	$_data['releaseYear']       = get_post_meta( $post->ID, 'releaseYear', true );
+	$_data['releaseMonth']      = get_post_meta( $post->ID, 'releaseMonth', true );
+	$_data['resourceInfo']      = get_post_meta( $post->ID, 'resourceInfo', true );
+	$_data['videoLinkOGV']      = get_post_meta( $post->ID, 'videoLinkOGV', true );
+	$_data['videoLinkMP4']      = get_post_meta( $post->ID, 'videoLinkMP4', true );
+	$_data['videoLinkWEBM']     = get_post_meta( $post->ID, 'videoLinkWEBM', true );
+
+	$data->data = $_data;
+	return $data;
+}
+add_filter( 'rest_prepare_products', 'rest_prepare_products', 10, 3 );
+
+
