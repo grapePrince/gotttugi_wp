@@ -153,24 +153,44 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 <a href="#content" class="skip_navigation"><span>컨텐츠 바로가기</span></a>
 <header class="container">
 	<h1>
-		<a href="index.html" class="sprites logo" data-locale="header.logo">로고</a>
+		<a href="<?php echo( esc_url( get_site_url() ) ); ?>" class="sprites logo" data-locale="header.logo">로고</a>
 	</h1>
 	<nav>
 		<ul class="clearfix">
-			<li data-class="corporation">
+		<li data-class="corporation">
 				<a href="#" data-locale="nav.introduce">오뚜기소개</a>
 				<ul>
 					<li>
-						<a href="#" data-locale="nav.introduce.ottugi">(주)오뚜기</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/주식회사오뚜기' ); ?>" 
+							data-locale="nav.introduce.ottugi"
+						>
+							(주)오뚜기
+						</a>
 					</li>
 					<li>
-						<a href="#" data-locale="nav.introduce.ottugi">인재채용</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/인재채용' ); ?>" 
+							data-locale="nav.introduce.ottugi"
+						>
+							인재채용
+						</a>
 					</li>
 					<li>
-						<a href="#" data-locale="nav.introduce.ottugi">투자정보</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/투자정보' ); ?>" 
+							data-locale="nav.introduce.ottugi"
+						>
+							투자정보
+						</a>
 					</li>
 					<li>
-						<a href="#" data-locale="nav.introduce.ottugi">찾아오시는길</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/찾아오시는길' ); ?>" 
+							data-locale="nav.introduce.ottugi"
+						>
+							찾아오시는길
+						</a>
 					</li>
 				</ul>
 			</li>
@@ -178,34 +198,90 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 				<a href="#" data-locale="nav.products">제품정보</a>
 				<ul>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.source">소스류</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지' ); ?>" 
+							data-locale="nav.products.source"
+						>
+							전체보기
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.powder">분말/건조</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=source' ); ?>" 
+							data-locale="nav.products.source"
+						>
+							소스류
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.retort">레토르트/간편식</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=condiment' ); ?>" 
+							data-locale="nav.products.powder"
+						>
+							분말/건조
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.freeze">냉장/냉동식품</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=retort' ); ?>" 
+							data-locale="nav.products.retort"
+						>
+							레토르트/간편식</a
+						>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.enrich_marine"
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=fridge' ); ?>" 
+							data-locale="nav.products.freeze"
+							>냉장/냉동식품</a
+						>
+					</li>
+					<li>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=agriculture' ); ?>" 
+							data-locale="nav.products.enrich_marine"
 							>농/축/수산</a
 						>
 					</li>
-					<li><a href="product_list.html" data-locale="nav.products.tea">차종류</a></li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.oil">버터/식용유</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=tea' ); ?>" 
+							data-locale="nav.products.tea"
+						>
+							차종류
+						</a>
+						</li>
+					<li>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=butter' ); ?>" 
+							data-locale="nav.products.oil"
+						>
+							버터/식용유
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.spice">향신료</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=flavor' ); ?>" 
+							data-locale="nav.products.spice"
+						>
+							향신료
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.ramens">라면류</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=ramen' ); ?>" 
+							data-locale="nav.products.ramens"
+						>
+							라면류
+						</a>
 					</li>
 					<li>
-						<a href="product_list.html" data-locale="nav.products.cereal">곡류가공</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/제품목록-페이지?sortingClass=wheat' ); ?>" 
+							data-locale="nav.products.cereal"
+						>
+							곡류가공
+						</a>
 					</li>
 				</ul>
 			</li>
@@ -213,20 +289,38 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 				<a href="#" data-locale="nav.recipe">요리마당</a>
 				<ul>
 					<li>
-						<a href="#" data-locale="nav.media.media_main">오뚜기레시피</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/오뚜기레시피' ); ?>" 
+							data-locale="nav.media.media_main"
+						>
+							오뚜기레시피
+						</a>
 					</li>
 				</ul>
 			</li>
 			<li data-class="media">
-				<a href="#" data-locale="nav.media">알리미</a>
+				<a 
+					href="#" 
+					data-locale="nav.media"
+				>
+					알리미
+				</a>
 				<ul>
 					<li>
-						<a href="#" data-locale="nav.media.media_main"
-							>미디어속오뚜기</a
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/미디어속오뚜기' ); ?>" 
+							data-locale="nav.media.media_main"
 						>
+							미디어속오뚜기
+						</a>
 					</li>
 					<li>
-						<a href="factory.html" data-locale="nav.media.excursion">공장견학신청</a>
+						<a 
+							href="<?php echo( esc_url( get_site_url() ) . '/공장견학신청' ); ?>" 
+							data-locale="nav.media.excursion"
+						>
+							공장견학신청
+						</a>
 					</li>
 				</ul>
 			</li>

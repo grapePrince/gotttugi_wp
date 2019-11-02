@@ -230,13 +230,20 @@ get_header( 'sub' );
 </section>
 
 <?php
-	$query = new WP_Query(
-		array(
-			'post_type'      => 'products',
-			'posts_per_page' => 4,
-		)
-	);
-	?>
+if ( ! empty( $_GET['sortingClass'] ) ) {
+	$param = wp_unslash( $_GET['sortingClass'] );
+} else {
+	$param = '';
+}
+$query = new WP_Query(
+	array(
+		'post_type'      => 'products',
+		'posts_per_page' => 4,
+		'meta_key'       => 'sortingClass',
+		'meta_value'     => $param,
+	)
+);
+?>
 
 <section class="product_list container">
 	<h2 class="hidden">상품목록</h2>

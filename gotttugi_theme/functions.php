@@ -152,3 +152,19 @@ function rest_prepare_products( $data, $post, $request ) {
 	return $data;
 }
 add_filter( 'rest_prepare_products', 'rest_prepare_products', 10, 3 );
+
+/**
+ * Post를 Rest API 로 가져올 때 meta_key, meta_value 함께 가져와준다.
+ *
+ * @param   array   $args       Contains by default pre written params.
+ * @param   array   $request    Contains params values passed through URL request.
+ * @return  array   $args       New array with added custom params and its values.
+ */
+function post_meta_request_params( $args, $request ) {
+	$args += array(
+		'meta_key'   => $request['meta_key'],
+		'meta_value' => $request['meta_value'],
+	);
+		return $args;
+}
+add_filter( 'rest_products_query', 'post_meta_request_params', 99, 2 );

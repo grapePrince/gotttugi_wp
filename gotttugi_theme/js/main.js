@@ -573,6 +573,15 @@ function shuffleArray(array) {
   }
 }
 
+$.urlParam = function(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	if(results && results.length > 0) {
+		return results[1];
+	} else {
+		return '';
+	}
+}
+
 function showMoreProducts(){
 	$('.l_product_list_loading').show();
 	$.ajax({
@@ -581,6 +590,8 @@ function showMoreProducts(){
 		data: { 
 			page: productListNextPage, 
 			per_page: productPerPage,
+			meta_key: 'sortingClass',
+			meta_value: decodeURIComponent($.urlParam('sortingClass')),
 			_embed: true
 		}
 	}).done(function(data) {
