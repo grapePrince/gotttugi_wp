@@ -28,7 +28,7 @@ get_header( 'sub' );
 </section>
 
 <section id="content" class="sub_factory container">
-현재 제품목록 페이지, 제품상세 페이지, 공장견학 페이지만 이용 가능합니다. 
+현재 제품 페이지, 알리미 > 공장견학 페이지만 이용 가능합니다. 
 </section>
 
 
