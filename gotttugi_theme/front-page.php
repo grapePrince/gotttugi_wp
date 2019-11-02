@@ -157,7 +157,12 @@ get_header( 'front' );
 				분류 : 조미소스 / 식품<br />
 				특징 : 독특하고 얼얼한 맛
 			</p>
-			<a class="btn--square" href="product_detail.html">상세더보기</a>
+			<a 
+				class="btn--square" 
+				href="<?php echo( esc_url( get_site_url() ) . '/products/이금기-훠궈-마라탕소스/' ); ?>"
+			>
+				상세더보기
+			</a>
 			<a class="btn--square" href="#"
 				><span class="sprites shoplink--small"
 					>몰로바로가기</span
@@ -208,52 +213,72 @@ get_header( 'front' );
 		</div>
 		<div class="thumnail_item layout--5column__col layout-square">
 			<div class="layout-square--content">
-				<a class="layout--5column__col__image" href="product_detail.html">
+				<a 
+					class="layout--5column__col__image" 
+					href="<?php echo( esc_url( get_site_url() ) . '/products/이금기-훠궈-마라탕소스/' ); ?>"
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/newproduct_1.png' ) ); ?>"
 						alt=""
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a 
+					href="<?php echo( esc_url( get_site_url() ) . '/products/이금기-훠궈-마라탕소스/' ); ?>"
+				>
 					<h4 class="thumnail_item--title">훠궈 마라탕소스</h4>
 				</a>
 			</div>
 		</div>
 		<div class="thumnail_item layout--5column__col layout-square">
 			<div class="layout-square--content">
-				<a class="layout--5column__col__image" href="product_detail.html">
+				<a 
+					class="layout--5column__col__image"
+					href="<?php echo( esc_url( get_site_url() ) . '/products/이금기-훠궈-해선탕소스/' ); ?>" 
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/newproduct_2.png' ) ); ?>"
 						alt=""
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a 
+					href="<?php echo( esc_url( get_site_url() ) . '/products/이금기-훠궈-해선탕소스/' ); ?>" 
+				>
 					<h4 class="thumnail_item--title">훠궈 해선탕소스</h4>
 				</a>
 			</div>
 		</div>
 		<div class="thumnail_item layout--5column__col layout-square">
 			<div class="layout-square--content">
-				<a class="layout--5column__col__image" href="product_detail.html">
+				<a 
+					class="layout--5column__col__image"
+					href="<?php echo( esc_url( get_site_url() ) . '/products/백세카레-약간매운맛/' ); ?>" 
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/newproduct_3.png' ) ); ?>"
 						alt=""
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/백세카레-약간매운맛/' ); ?>" 
+				>
 					<h4 class="thumnail_item--title">스페셜카레</h4>
 				</a>
 			</div>
 		</div>
 		<div class="thumnail_item layout--5column__col layout-square ">
 			<div class="layout-square--content">
-				<a class="layout--5column__col__image" href="product_detail.html">
+				<a 
+					class="layout--5column__col__image"
+					href="<?php echo( esc_url( get_site_url() ) . '/products/맛있는-오뚜기-컵밥-궁중갈비찜·밥/' ); ?>" 
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/newproduct_4.png' ) ); ?>"
 						alt=""
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/맛있는-오뚜기-컵밥-궁중갈비찜·밥/' ); ?>" 
+				>
 					<h4 class="thumnail_item--title">궁중갈비찜 컵밥</h4>
 				</a>
 			</div>
@@ -394,7 +419,10 @@ get_header( 'front' );
 				분류 : 라면류<br>
 				특징 : 숙성된 매운 맛<br>
 			</div>
-				<div class="l_popular__details__attr__button m_button--square--border js-href" data-href="/product_detail.html" >
+				<div 
+					class="l_popular__details__attr__button m_button--square--border js-href"
+					data-href="<?php echo( esc_url( get_site_url() ) . '/products/진라면/' ); ?>"
+				>
 					상세 더보기
 					<div class="m_button--square--border__icon--more">
 					+  
@@ -418,52 +446,72 @@ get_header( 'front' );
 		</div>
 		<div class="layout--5column__col layout-square thumnail_item">
 			<div class="layout-square--content">
-				<a  class="layout--5column__col__image"  href="product_detail.html">
+				<a
+					class="layout--5column__col__image"  
+					href="<?php echo( esc_url( get_site_url() ) . '/products/진라면/' ); ?>"
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/popular_2.png' ) ); ?>"
 						alt="" 
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/진라면/' ); ?>"
+				>
 					<h4 class="thumnail_item--title">진라면매운맛</h4>
 				</a>
 			</div>   
 		</div>
 		<div class="layout--5column__col layout-square thumnail_item">
 			<div class="layout-square--content">
-				<a  class="layout--5column__col__image" href="product_detail.html">
+				<a 
+					class="layout--5column__col__image"
+					href="<?php echo( esc_url( get_site_url() ) . '/products/백세카레-약간매운맛/' ); ?>"
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/popular_3.png' ) ); ?>"
 						alt="" 
 					/>					
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/백세카레-약간매운맛/' ); ?>"
+				>
 					<h4 class="thumnail_item--title">3분카레</h4>
 				</a>
 			</div>   
 		</div>
 		<div class="layout--5column__col layout-square thumnail_item">
 			<div class="layout-square--content">
-				<a  class="layout--5column__col__image" href="product_detail.html">
+				<a  
+					class="layout--5column__col__image" 
+					href="<?php echo( esc_url( get_site_url() ) . '/products/맛있는-베이컨-치즈볶음밥/' ); ?>"
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/popular_4.png' ) ); ?>"
 						alt="" 
 					/>					
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/맛있는-베이컨-치즈볶음밥/' ); ?>"
+				>
 					<h4 class="thumnail_item--title">베이컨치즈볶음밥</h4>
 				</a>
 			</div>   
 		</div>
 		<div class="layout--5column__col layout-square thumnail_item">
 			<div class="layout-square--content">
-				<a  class="layout--5column__col__image" href="product_detail.html">
+				<a  
+					class="layout--5column__col__image"
+					href="<?php echo( esc_url( get_site_url() ) . '/products/컵누들-우동맛/' ); ?>"
+				>
 					<img 
 						src="<?php echo( esc_url( BASE_URI . '/images/popular_1.png' ) ); ?>"
 						alt="" 
 					/>
 				</a>
-				<a href="product_detail.html">
+				<a
+					href="<?php echo( esc_url( get_site_url() ) . '/products/컵누들-우동맛/' ); ?>"
+				>
 					<h4 class="thumnail_item--title">오뚜기컵누들</h4>
 				</a>
 			</div>   
