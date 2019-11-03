@@ -9,10 +9,10 @@ $(document).ready(function() {
   var $recipeProcessDetails = $('.receipe__process__item__detail');
   var $recipeProcessItems = $('.recipe__process__item');
 
-  var CLASS_SEARCH_OPENED = "open_search";
-  var CLASS_SUB_OPENED = "open_sub";
-  var CLASS_SETTING_OPENED = "open_setting";
-  var CLASS_ACTIVE = "active";
+  var CLASS_SEARCH_OPENED = 'open_search';
+  var CLASS_SUB_OPENED = 'open_sub';
+  var CLASS_SETTING_OPENED = 'open_setting';
+  var CLASS_ACTIVE = 'active';
   var MOBILE_WIDTH = 600;
   var TABLET_WIDTH = 1110;
 
@@ -20,9 +20,9 @@ $(document).ready(function() {
   var underTabletWidth = $(window).outerWidth() <= TABLET_WIDTH ? true : false;
 
   var PAGE_PRODUCT_LIST = 'js-product_list';
-	var PAGE_PRODUCT_DETAIL = 'js-product_detail';
+  var PAGE_PRODUCT_DETAIL = 'js-product_detail';
 	var PAGE_SEARCH_RESULT = 'js-search_result';
-  var PAGE_FACTORY = 'js-factory';
+	var PAGE_FACTORY = 'js-factory';
 
   var galleryData = [];
   var currentIndex = 0;
@@ -39,16 +39,20 @@ $(document).ready(function() {
   var ing_recipeProcess = true;
 
   var factoryEventRegistered = false;
-  var resizeVideo; 
-  var videoQue = [];
+	var videoQue = [];
 
   var weatherData = {};
+  var factoryCalenderDate;
 
 	var BASE_URI = $('#uri_info').data('base_uri'); 
 	var ROOT_URI = $('#uri_info').data('root_uri');
 	
 	var productListNextPage = 2;
 	var productPerPage = 4;
+
+  if(typeof moment !== 'undefined') {
+    var today = moment();
+  }
 
   if ($(document.body).hasClass('main')) {
     initMain();
@@ -67,10 +71,10 @@ $(document).ready(function() {
       initMobileDevice();      
     } else {
       if (!bannerSlider) {
-        bannerSlider = $(".sliderWrap").bxSlider({
+        bannerSlider = $('.sliderWrap').bxSlider({
           pager: false,
-          prevSelector: ".banner .left",
-          nextSelector: ".banner .right"
+          prevSelector: '.banner .left',
+          nextSelector: '.banner .right'
         });        
       }
       if (!newsSlider) {
@@ -86,14 +90,24 @@ $(document).ready(function() {
     initNews();
   }
 
+  function getTodayMonth() {
+    return today.month();
+  }
 
+  function getTodayDate() {
+    return today.date();
+  }
+
+  function getNewMoment() {
+    return new moment();
+  }
 
   function initMobileDevice() {
     if (!bannerSlider) {
-      bannerSlider = $(".sliderWrap").bxSlider({
+      bannerSlider = $('.sliderWrap').bxSlider({
         pager: false,
-        prevSelector: ".banner .left",
-        nextSelector: ".banner .right"
+        prevSelector: '.banner .left',
+        nextSelector: '.banner .right'
       });
     }
     if (!newsSlider) {
@@ -150,7 +164,7 @@ $(document).ready(function() {
   function loadNewsSlider() {
     var config = {
       pagination: {
-        el: ".swiper-pagination",
+        el: '.swiper-pagination',
         clickable: true
       },
       slidesPerView: 'auto',
@@ -175,7 +189,7 @@ $(document).ready(function() {
           underTabletWidth = $(window).outerWidth() <= TABLET_WIDTH ? true : false;
           
           if (isMobile) {
-            $("video").each(function() {
+            $('video').each(function() {
               $(this)
                 .get(0)
                 .play();
@@ -186,7 +200,7 @@ $(document).ready(function() {
     };
 
     if(!newsSlider) {
-     newsSlider = new Swiper(".swiper-container", config);
+     newsSlider = new Swiper('.swiper-container', config);
     } else {
       newsSlider.update();
     }
@@ -930,16 +944,21 @@ function videoClicked() {
   if($(this).hasClass('js-active')) {
     $(this).removeClass('js-active');
     $window.off('resize', resizeVideo);
+    $video.css({
+      'width' : '',
+      'height' : ''
+    });
     $video.attr('style', '');
   } else {
     $(this).addClass('js-active');
     fitVideo( $video);
-    resizeVideo = $window.on("resize", function() {
-      fitVideo($video);
-    });
+    $window.on("resize", resizeVideo);
   }
 }
 
+function resizeVideo() {
+  fitVideo($video);
+}
 
 function fitVideo($video) {
   var windowWidth = $(window).width(),
@@ -974,11 +993,11 @@ function fitVideo($video) {
 
 function initNews() {
   if($(window).outerWidth() < 650) {
-    $('.news_image_2').attr('src', BASE_URI + "/images/event_2_mobile.jpg");
-    $('.news_image_3').attr('src', BASE_URI + "/images/event_3_mobile.jpg");
+    $('.news_image_2').attr('src', "images/event_2_mobile.jpg");
+    $('.news_image_3').attr('src', "images/event_3_mobile.jpg");
   } else {
-    $('.news_image_2').attr('src', BASE_URI + "/images/event_2.jpg");
-    $('.news_image_3').attr('src', BASE_URI + "/images/event_3.jpg");
+    $('.news_image_2').attr('src', "images/event_2.jpg");
+    $('.news_image_3').attr('src', "images/event_3.jpg");
   }
 }
 
@@ -998,6 +1017,8 @@ function initFactoryPage() {
     $('.sub_factory_button--next').on('click', factoryNextButton);
     $('.sub_factory_button--prev').on('click', factoryPrevButton);
     $('.sub_factory_button--cancel').on('click', factoryCancelButton);
+    $('.sub_factory__date__controls__arrow').on('click', factoryArrowClicked);
+    $('#sub_factory__date__form__month').on('change', factoryDateMonthChange);
 
     $('#sub_factory__form__applicant__name__input').on('change', factoryFormChange);
     $('#sub_factory__form__applicant__phone__input1').on('change', factoryFormChange);
@@ -1008,44 +1029,147 @@ function initFactoryPage() {
     factoryEventRegistered = true;
 
     // 페이지 로딩 처음 한 번만 
-    initWeatherInfo();
-
-    initDateOption();
+    initWeatherInfo(getNewMoment());
+    initDateOptionMonth();
+    initDateOption(getNewMoment());
   }
 
+}
+
+function factoryArrowClicked(e) {
+  if($(this).hasClass('js-left')) {
+    initWeatherInfo(factoryCalenderDate.subtract(1, 'months'));
+  } else {
+    initWeatherInfo(factoryCalenderDate.add(1, 'months'));
+  }
+}
+
+function factoryDateMonthChange(e) {
+  initDateOption(getNewMoment().month(this.value - 1));
 }
 
 function factoryFormChange() {
   $('.sub_factory__form__applicant__validate').removeClass('js-invalid');
 }
 
-function initDateOption() {
+function initDateOption(date) {
   var optionHtml = '';
-  var now = moment();
-  for(var i = now.date() + 1 ; i <= 30 ; i++) {
+  var i;
+  var startDate = 0;
+
+  if(getTodayMonth() !== date.month()) {
+    startDate = 1;
+  } else {
+    startDate = getTodayDate() + 1;
+  }
+
+  for(var i = startDate ; i <= date.endOf("month").date() ; i++) {
     optionHtml += '<option>' + i + '</option>'
   }
   $('#sub_factory__date__form__day').html(optionHtml);
 }
 
-function initWeatherInfo() {
+function initDateOptionMonth() {
+  var optionHtml = '';
+  var i;
+  for(i = getTodayMonth() + 1; i <= getTodayMonth() + 2 ; i++ ) {
+    optionHtml += '<option>' + i + '</option>'
+  }
+  $('#sub_factory__date__form__month').html(optionHtml);
+}
+
+
+function initWeatherInfo(date) {
+  factoryCalenderDate = new moment(date);
+  drawMonthCalendar(date);  
+}
+
+function drawMonthCalendar(date) {
+  var firstDay = new moment(date).startOf('month').day();
+  var lastDate = new moment(date).endOf('month').date();
+  var previousLastDate = new moment(date).subtract(1, 'months').endOf('month').date();
+  var currentDate = previousLastDate - firstDay - 1;
+  var fullDate;
+  var ulTemplate = '';
+  var liTemplate = '<li class="sub_factory__date__dates__content__day" data-date="{{FullDate}}">' +
+                      '<span class="sub_factory__date__dates__content__day__value {{Color}}">{{Date}}</span>' +
+                      '<span class="sub_factory__date__dates__content__day__weather__text"></span>' +
+                      '<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>' +
+                    '</li>';
+  var currentHtml = '';
+  var tempHtml = '';
+  var previuseMonth = true;
+  var nextMonth = false;           
+
+  $('.sub_factory__date__controls__text_month').text(date.format('MMM'));
+  $('.sub_factory__date__controls__text_date').text(date.format('YYYY.MM'));
+  
+  for(var i = 0 ; i < 6 ; i++) {
+    if(i === 5 && nextMonth) {
+      break;
+    }
+
+    ulTemplate = '<ul class="sub_factory__date__dates__content__week">';    
+
+    for (var j = 0 ; j < 7 ; j++) {
+      currentHtml = '';
+      if(previuseMonth && j === firstDay) {
+        currentDate = 1;
+        previuseMonth = false;
+      }
+
+      if(previuseMonth) {
+        fullDate = new moment(date).subtract(1, 'months').day(currentDate).format('YYYYMMDD');
+      } else if(nextMonth) {
+        fullDate = new moment(date).add(1, 'months').day(currentDate).format('YYYYMMDD');
+      } else {
+        fullDate = new moment(date).date(currentDate).format('YYYYMMDD');
+      }
+
+      currentHtml = liTemplate.replace(/{{Date}}/g , currentDate)
+                              .replace(/{{FullDate}}/g, fullDate);
+
+      if(j === 0) {
+        currentHtml = currentHtml.replace('{{Color}}', 'color_red');
+      } else if(j === 6) {
+        currentHtml = currentHtml.replace('{{Color}}', 'color_blue');
+      } else {
+        currentHtml = currentHtml.replace('{{Color}}', '');
+      }
+
+      ulTemplate += currentHtml;
+
+      if(!previuseMonth && currentDate == lastDate) {
+        currentDate = 1;
+        nextMonth = true;
+      } else {
+        currentDate++;
+      }
+    }
+
+    ulTemplate += '</ul>';
+
+    tempHtml += ulTemplate;
+  }
+
+  $('.sub_factory__date__dates__content').html(tempHtml);
+
   $.ajax({
-    url: "http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=c9d13b23d0a6283ec7f0171d6e5dbb53&units=metric",
+    url: 'http://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=c9d13b23d0a6283ec7f0171d6e5dbb53&units=metric',
     context: document.body
   }).done(function(data) {
     decodeWeatherData(data);
     drawDateHtml();
-  });
+  });  
 }
 
 function decodeWeatherData(data) {
-  var now = new moment();
   weatherData = {};
   for(var i = 0 ; i < data.list.length ; i++) {
     var item = data.list[i];
     var time = new moment(item.dt * 1000);
-    if(time.date() > now.date()) {
-      var key = "" + time.date();
+    if(time.date() > getTodayDate()) {
+      var key = '' + time.format('YYYYMMDD');
       if(weatherData[key]) {
         var maxTemp = Math.max(weatherData[key].maxTemp, item.main.temp_max);
         var minTemp = Math.min(weatherData[key].minTemp, item.main.temp_min);
@@ -1068,7 +1192,7 @@ function decodeWeatherData(data) {
 
 function drawDateHtml() {
   for(var key in weatherData) {
-    var $el = $('.sub_factory__date__dates__content__day[data-day=' + key + ']');
+    var $el = $('.sub_factory__date__dates__content__day[data-date=' + key + ']');
     var data = weatherData[key];
     var text = Math.floor(data.minTemp) + '도 ~ ' + Math.floor(data.maxTemp) + '도';
     $el.find('.sub_factory__date__dates__content__day__weather__text').text(text);
@@ -1102,31 +1226,55 @@ function factoryNextButton() {
     $('#sub_factory__form__applicant__name__input').focus();
 
   } else if ($('.sub_factory').hasClass('js-factory-form')) {
-    if(!$('#sub_factory__form__applicant__name__input').val()) {
-      $('.sub_factory__form__applicant__validate').addClass('js-invalid');
-      $('.sub_factory__form__applicant__name__input').focus();
-    } else if(!$('#sub_factory__form__applicant__phone__input1').val()) {
-      $('.sub_factory__form__applicant__validate').addClass('js-invalid');
-      $('.sub_factory__form__applicant__phone__input1').focus();
-    } else if(!$('#sub_factory__form__applicant__phone__input2').val()) {
-      $('.sub_factory__form__applicant__validate').addClass('js-invalid');
-      $('.sub_factory__form__applicant__phone__input2').focus();
-    } else if(!$('#sub_factory__form__applicant__phone__input3').val()) {
-      $('.sub_factory__form__applicant__validate').addClass('js-invalid');
-      $('.sub_factory__form__applicant__phone__input3').focus();
-    } else if(!$('#sub_factory__form__applicant__email__input').val()) {
-      $('.sub_factory__form__applicant__validate').addClass('js-invalid');
-      $('.sub_factory__form__applicant__email__input').focus();
-    } else {
-      $('.sub_factory')
-      .removeClass('js-factory-form')
-      .addClass('js-factory-complete');
-      $('.sub_factory_button--next').hide();
-      $('.sub_factory_button--prev').hide();
-      $('.sub_factory_button--cancel').hide();
-    }
+		sendFactoryFormInfo();
 
   }
+}
+
+function sendFactoryFormInfo() {
+	if(!$('#sub_factory__form__applicant__name__input').val()) {
+		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
+		$('.sub_factory__form__applicant__name__input').focus();
+	} else if(!$('#sub_factory__form__applicant__phone__input1').val()) {
+		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
+		$('.sub_factory__form__applicant__phone__input1').focus();
+	} else if(!$('#sub_factory__form__applicant__phone__input2').val()) {
+		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
+		$('.sub_factory__form__applicant__phone__input2').focus();
+	} else if(!$('#sub_factory__form__applicant__phone__input3').val()) {
+		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
+		$('.sub_factory__form__applicant__phone__input3').focus();
+	} else if(!$('#sub_factory__form__applicant__email__input').val()) {
+		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
+		$('.sub_factory__form__applicant__email__input').focus();
+	} else {
+		$.ajax({
+      url: ROOT_URI + '/wp-admin/admin-post.php',
+      type: 'POST',
+      data: { 
+        'action': 'factory_form', 
+				'_wpnonce': $('input[name=_wpnonce]').attr('value'),
+				'_wp_http_referer': $('input[name=_wp_http_referer]').attr('value'),
+				'sub_factory__form__applicant__name__input': $('#sub_factory__form__applicant__name__input').val(),
+				'sub_factory__form__applicant__phone__input1': $('#sub_factory__form__applicant__name__input').val(),
+				'sub_factory__form__applicant__phone__input2': $('#sub_factory__form__applicant__name__input').val(),
+				'sub_factory__form__applicant__phone__input3': $('#sub_factory__form__applicant__name__input').val(),
+				'sub_factory__form__applicant__email__input': $('#sub_factory__form__applicant__name__input').val(),
+				'sub_factory__form__category': $('.sub_factory__form__category__text').text(),
+				'sub_factory__form__date': $('.sub_factory__form__date__text').text(),
+				'sub_factory__form__require__textarea': $('#sub_factory__form__require__textarea').val()
+      }
+    }).done(function(data) {
+			$('.sub_factory')
+			.removeClass('js-factory-form')
+			.addClass('js-factory-complete');
+			$('.sub_factory_button--next').hide();
+			$('.sub_factory_button--prev').hide();
+			$('.sub_factory_button--cancel').hide();
+    }).fail(function(e) {
+			console.log(e);
+		});
+	}
 }
 
 function factoryPrevButton() {

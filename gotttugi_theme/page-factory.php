@@ -77,11 +77,11 @@ get_header( 'sub' );
 		<div class="sub_factory_category__form">
 			<h3 class="sub_factory_category__form__title typo_content_title_small_bold">견학분류</h3>
 			<input id="sub_factory_category__form__input--groups"  class="sub_factory_category__form__radio m_input_radio" type="radio" name="factory_form_category">
-			<label for="sub_factory_category__form__input--groups" class="sub_factory_category__form__label m_input_label">
+			<label tabindex="0" for="sub_factory_category__form__input--groups" class="sub_factory_category__form__label m_input_label">
 				<span class="sub_factory_category__form__label__icon m_input_radio_icon ">아이콘</span>
 				<span class="sub_factory_category__form__label__text m_input_radio_text typo_content">단체견학</span>
 			</label>
-			<input id="sub_factory_category__form__input--individuals" class="sub_factory_category__form__radio m_input_radio" type="radio" name="factory_form_category">
+			<input tabindex="0"  id="sub_factory_category__form__input--individuals" class="sub_factory_category__form__radio m_input_radio" type="radio" name="factory_form_category">
 			<label for="sub_factory_category__form__input--individuals" class="sub_factory_category__form__label m_input_label">
 				<span class="sub_factory_category__form__label__icon m_input_radio_icon ">아이콘</span>
 				<span class="sub_factory_category__form__label__text m_input_radio_text typo_content">개인견학</span>
@@ -100,14 +100,14 @@ get_header( 'sub' );
 	</div>
 	<div class="sub_factory__content--date">
 		<div class="sub_factory__date__controls">
-			<div class="sub_factory__date__controls__arrow">
+			<div class="sub_factory__date__controls__arrow js-left">
 				<span class="sprites sprites--left_arrow">왼쪽화살표</span>
 			</div>     
 			<div class="sub_factory__date__controls__dates">
 				<span class="sub_factory__date__controls__text_month typo_content">Sep</span>
 				<span class="sub_factory__date__controls__text_date typo_content_title_bold">2019.9</span>
 			</div>
-			<div class="sub_factory__date__controls__arrow">
+			<div class="sub_factory__date__controls__arrow js-right">
 				<span class="sprites sprites--right_arrow">오른쪽화살표</span>
 			</div>   
 		</div>
@@ -136,191 +136,6 @@ get_header( 'sub' );
 				</li>
 			</ul>
 			<div class="sub_factory__date__dates__content">
-				<ul class="sub_factory__date__dates__content__week">
-					<li class="sub_factory__date__dates__content__day" data-day="1">
-						<span class="sub_factory__date__dates__content__day__value color_red">1</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="2">
-						<span class="sub_factory__date__dates__content__day__value">2</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="3">
-						<span class="sub_factory__date__dates__content__day__value">3</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="4">
-						<span class="sub_factory__date__dates__content__day__value">4</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="5">
-						<span class="sub_factory__date__dates__content__day__value">5</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="6">
-						<span class="sub_factory__date__dates__content__day__value">6</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="7">
-						<span class="sub_factory__date__dates__content__day__value color_blue">7</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-				</ul>
-				<ul class="sub_factory__date__dates__content__week">
-					<li class="sub_factory__date__dates__content__day" data-day="8">
-						<span class="sub_factory__date__dates__content__day__value color_red">8</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="9">
-						<span class="sub_factory__date__dates__content__day__value">9</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="10">
-						<span class="sub_factory__date__dates__content__day__value">10</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="11">
-						<span class="sub_factory__date__dates__content__day__value">11</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="12">
-						<span class="sub_factory__date__dates__content__day__value">12</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="13">
-						<span class="sub_factory__date__dates__content__day__value">13</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="14">
-						<span class="sub_factory__date__dates__content__day__value color_blue">14</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-				</ul>
-				<ul class="sub_factory__date__dates__content__week">
-					<li class="sub_factory__date__dates__content__day" data-day="15">
-						<span class="sub_factory__date__dates__content__day__value color_red">15</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="16">
-						<span class="sub_factory__date__dates__content__day__value">16</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="17">
-						<span class="sub_factory__date__dates__content__day__value">17</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="18">
-						<span class="sub_factory__date__dates__content__day__value">18</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="19">
-						<span class="sub_factory__date__dates__content__day__value">19</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="20">
-						<span class="sub_factory__date__dates__content__day__value">20</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="21">
-						<span class="sub_factory__date__dates__content__day__value color_blue">21</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-				</ul>
-				<ul class="sub_factory__date__dates__content__week">
-					<li class="sub_factory__date__dates__content__day" data-day="22">
-						<span class="sub_factory__date__dates__content__day__value color_red">22</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="23">
-						<span class="sub_factory__date__dates__content__day__value">23</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="24">
-						<span class="sub_factory__date__dates__content__day__value">24</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="25">
-						<span class="sub_factory__date__dates__content__day__value">25</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="26">
-						<span class="sub_factory__date__dates__content__day__value">26</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="27">
-						<span class="sub_factory__date__dates__content__day__value">27</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="28">
-						<span class="sub_factory__date__dates__content__day__value color_blue">28</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-				</ul>
-				<ul class="sub_factory__date__dates__content__week">
-					<li class="sub_factory__date__dates__content__day" data-day="29">
-						<span class="sub_factory__date__dates__content__day__value color_red">29</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>
-					<li class="sub_factory__date__dates__content__day" data-day="30">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-					<li class="sub_factory__date__dates__content__day js-blank">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-					<li class="sub_factory__date__dates__content__day js-blank">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-					<li class="sub_factory__date__dates__content__day js-blank">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-					<li class="sub_factory__date__dates__content__day js-blank">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-					<li class="sub_factory__date__dates__content__day js-blank">
-						<span class="sub_factory__date__dates__content__day__value">30</span>
-						<span class="sub_factory__date__dates__content__day__weather__text"></span>
-						<span class="sub_factory__date__dates__content__day__weather__icon">아이콘</span>
-					</li>         
-				</ul>
 			</div>
 		</div>
 		<div class="sub_factory__date__form">
@@ -340,43 +155,86 @@ get_header( 'sub' );
 		</div>
 	</div>
 	<div class="sub_factory__content--form">
-		<div class="sub_factory__form__container sub_factory__form__applicant">
-			<h3 class="sub_factory__form__bigtitle sub_factory__form__applicant__title ">신청자정보</h3>
-			<div class="sub_factory__form__item__container sub_factory__form__applicant__name">
-				<h4 class="sub_factory__form__title sub_factory__form__applicant__name__title">이름<span class="color_red">*</span></h4>
-				<input id="sub_factory__form__applicant__name__input" class="sub_factory__form__applicant__name__input m_input_text" type="text">
-			</div>
-			<div class="sub_factory__form__item__container sub_factory__form__applicant__phone">
-				<h4 class="sub_factory__form__title sub_factory__form__applicant__phone__title">휴대폰번호<span class="color_red">*</span></h4>
-				<div>
-					<input id="sub_factory__form__applicant__phone__input1" class="m_input_text sub_factory__form__applicant__phone__input1" type="text">
-					<span class="sub_factory__form__applicant__phone__hyphen">-</span>
-					<input id="sub_factory__form__applicant__phone__input2" class="m_input_text sub_factory__form__applicant__phone__input2 " type="text">
-					<span class="sub_factory__form__applicant__phone__hyphen">-</span>
-					<input id="sub_factory__form__applicant__phone__input3" class="m_input_text sub_factory__form__applicant__phone__input3 " type="text">
+		<form 
+			action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" 
+			method="post" 
+			id="factoryForm"
+		>
+			<input type="hidden" name="action" value="factory_form">
+			<?php wp_nonce_field( 'factory_form' ); ?>
+
+			<div class="sub_factory__form__container sub_factory__form__applicant">
+				<h3 class="sub_factory__form__bigtitle sub_factory__form__applicant__title ">신청자정보</h3>
+				<div class="sub_factory__form__item__container sub_factory__form__applicant__name">
+					<h4 class="sub_factory__form__title sub_factory__form__applicant__name__title">이름<span class="color_red">*</span></h4>
+					<input 
+						id="sub_factory__form__applicant__name__input"
+						name="sub_factory__form__applicant__name__input"
+						class="sub_factory__form__applicant__name__input m_input_text" 
+						type="text"
+					>
 				</div>
+				<div class="sub_factory__form__item__container sub_factory__form__applicant__phone">
+					<h4 class="sub_factory__form__title sub_factory__form__applicant__phone__title">휴대폰번호<span class="color_red">*</span></h4>
+					<div>
+						<input 
+							id="sub_factory__form__applicant__phone__input1"
+							name="sub_factory__form__applicant__phone__input1"
+							class="m_input_text sub_factory__form__applicant__phone__input1" 
+							type="text"
+						>
+						<span class="sub_factory__form__applicant__phone__hyphen">-</span>
+						<input 
+							id="sub_factory__form__applicant__phone__input2"
+							name="sub_factory__form__applicant__phone__input2"
+							class="m_input_text sub_factory__form__applicant__phone__input2 " 
+							type="text"
+						>
+						<span class="sub_factory__form__applicant__phone__hyphen">-</span>
+						<input 
+							id="sub_factory__form__applicant__phone__input3"
+							name="sub_factory__form__applicant__phone__input3"
+							class="m_input_text sub_factory__form__applicant__phone__input3 " 
+							type="text"
+						>
+					</div>
+				</div>
+				<div class="sub_factory__form__item__container sub_factory__form__applicant__email">
+					<h4 class="sub_factory__form__title sub_factory__form__applicant__email__title">
+						이메일<span class="color_red">*</span>
+					</h4>
+					<input 
+						id="sub_factory__form__applicant__email__input" 
+						name="sub_factory__form__applicant__email__input"
+						class="m_input_text sub_factory__form__applicant__email__input" 
+						type="text"
+					>
+				</div>
+				<p class="sub_factory__form__item__container sub_factory__form__applicant__validate typo_content_small color_red">
+					필수항목을 입력해주세요.
+				</p>
 			</div>
-			<div class="sub_factory__form__item__container sub_factory__form__applicant__email">
-				<h4 class="sub_factory__form__title sub_factory__form__applicant__email__title">이메일<span class="color_red">*</span></h4>
-				<input id="sub_factory__form__applicant__email__input" class="m_input_text sub_factory__form__applicant__email__input" type="text">
+			<div class="sub_factory__form__container sub_factory__form__category">
+				<h3 class="sub_factory__form__bigtitle sub_factory__form__category__title">견학분류</h3>
+				<p class="sub_factory__form__category__text">개인견학</p>
 			</div>
-			<p class="sub_factory__form__item__container sub_factory__form__applicant__validate typo_content_small color_red">
-				필수항목을 입력해주세요.
-			</p>
-		</div>
-		<div class="sub_factory__form__container sub_factory__form__category">
-			<h3 class="sub_factory__form__bigtitle sub_factory__form__category__title">견학분류</h3>
-			<p class="sub_factory__form__category__text">개인견학</p>
-		</div>
-		<div class="sub_factory__form__container sub_factory__form__date">
-			<h3 class=" sub_factory__form__bigtitle sub_factory__form__date__title">방문일자</h3>
-			<p class="sub_factory__form__date__text">2019년 9월 2일</p>
-		</div>
-		<div class="sub_factory__form__container sub_factory__form__require">
-			<h3 class="sub_factory__form__bigtitle sub_factory__form__require__title">요청사항</h3>
-			<textarea class="m_input_textarea sub_factory__form__require__textarea"></textarea>
-		</div>
+			<div class="sub_factory__form__container sub_factory__form__date">
+				<h3 class=" sub_factory__form__bigtitle sub_factory__form__date__title">방문일자</h3>
+				<p class="sub_factory__form__date__text">2019년 9월 2일</p>
+			</div>
+			<div class="sub_factory__form__container sub_factory__form__require">
+				<h3 class="sub_factory__form__bigtitle sub_factory__form__require__title">요청사항</h3>
+				<textarea 
+					class="m_input_textarea sub_factory__form__require__textarea"
+					id="sub_factory__form__require__textarea"
+					name="sub_factory__form__require__textarea"
+				>
+				</textarea>
+			</div>
+		</form>	
 	</div>
+
+
 	<div class="sub_factory__content--complete">
 		<h2 class="typo_title_small_bold sub_factory_complete__title color_red">신청이 완료되었습니다.</h2>
 		<p class="sub_factory_complete__desc color_black75">
@@ -386,9 +244,9 @@ get_header( 'sub' );
 	</div>
 
 	<div class="sub_factory_buttons">
-		<span class="sub_factory_button--prev m_button--round--grey typo_content_title_small">이전</span>
-		<span class="sub_factory_button--next m_button--round--red typo_content_title_small color_white">다음</span>
-		<span class="sub_factory_button--cancel m_button--round--grey typo_content_title_small">취소</span>
+		<span tabindex="0" class="sub_factory_button--prev m_button--round--grey typo_content_title_small">이전</span>
+		<span tabindex="0" class="sub_factory_button--next m_button--round--red typo_content_title_small color_white">다음</span>
+		<span tabindex="0" class="sub_factory_button--cancel m_button--round--grey typo_content_title_small">취소</span>
 	</div>
 	<div class="sub_factory_admin">
 		<div class="sub_factory_admin__logo__container">
