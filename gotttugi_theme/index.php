@@ -18,7 +18,10 @@ get_header( 'sub' );
 	<h2 class="hidden">현재경로</h2>
 	<div class="l_breadscrum__items container">
 		<div class="l_breadscrum__item s_breadscrum__item">
-			<a class="s_breadscrum__item__icon--home" href="<?php echo( esc_url( get_site_url() ) ); ?>">
+			<a 
+				class="s_breadscrum__item__icon--home" 
+				href="<?php echo( esc_url( get_site_url() ) ); ?>"
+			>
 				홈으로
 			</a>
 		</div>
