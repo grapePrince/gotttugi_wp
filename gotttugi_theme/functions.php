@@ -27,6 +27,7 @@ function load_scripts() {
 	wp_enqueue_script( 'smoothscroll', BASE_URI . '/js/jquery.smooth-scroll.min.js', array( 'jquery' ), '1.4.12', true );
 	wp_enqueue_script( 'animatenumber', BASE_URI . '/js/jquery.animateNumber.min.js', array( 'jquery' ), '0.0.14', true );
 	wp_enqueue_script( 'jqueryui', BASE_URI . '/js/jquery-ui-1.12.1.min.js', array( 'jquery' ), '1.12.1', true );
+	wp_enqueue_script( 'moment', BASE_URI . '/js/moment.2.24.0.min.js', array( 'moment' ), '2.24.0', true );
 
 	wp_enqueue_script( 'main', BASE_URI . '/js/main.js', array( 'jquery' ), '1.0.0', true );
 }
