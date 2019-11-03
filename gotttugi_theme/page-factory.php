@@ -12,7 +12,7 @@
  * @link     http://rahata1.dothome.co.kr
  */
 
-define( 'CURRENT_PAGE', 'product_list' );
+define( 'CURRENT_PAGE', 'factory' );
 get_header( 'sub' );
 ?>
 

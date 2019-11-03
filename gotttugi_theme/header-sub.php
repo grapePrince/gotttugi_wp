@@ -139,6 +139,8 @@ if ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'product_list' ) {
 	body_class( 'sub js-product_detail' );
 } elseif ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'search_result' ) {
 	body_class( 'sub js-search_result' );
+} elseif ( defined( 'CURRENT_PAGE' ) && CURRENT_PAGE === 'factory' ) {
+	body_class( 'sub js-factory' );
 } else {
 	body_class( 'sub' );
 }
