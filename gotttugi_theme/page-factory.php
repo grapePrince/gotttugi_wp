@@ -161,13 +161,14 @@ get_header( 'sub' );
 			id="factoryForm"
 		>
 			<input type="hidden" name="action" value="factory_form">
+			<?php wp_nonce_field( 'factory_form' ); ?>
 			<div class="sub_factory__form__container sub_factory__form__applicant">
 				<h3 class="sub_factory__form__bigtitle sub_factory__form__applicant__title ">신청자정보</h3>
 				<div class="sub_factory__form__item__container sub_factory__form__applicant__name">
 					<h4 class="sub_factory__form__title sub_factory__form__applicant__name__title">이름<span class="color_red">*</span></h4>
 					<input 
 						id="sub_factory__form__applicant__name__input"
-						name="sub_factory__form__applicant__name__input"
+						name="name"
 						class="sub_factory__form__applicant__name__input m_input_text" 
 						type="text"
 					>
@@ -177,21 +178,21 @@ get_header( 'sub' );
 					<div>
 						<input 
 							id="sub_factory__form__applicant__phone__input1"
-							name="sub_factory__form__applicant__phone__input1"
+							name="phone1"
 							class="m_input_text sub_factory__form__applicant__phone__input1" 
 							type="text"
 						>
 						<span class="sub_factory__form__applicant__phone__hyphen">-</span>
 						<input 
 							id="sub_factory__form__applicant__phone__input2"
-							name="sub_factory__form__applicant__phone__input2"
+							name="phone2"
 							class="m_input_text sub_factory__form__applicant__phone__input2 " 
 							type="text"
 						>
 						<span class="sub_factory__form__applicant__phone__hyphen">-</span>
 						<input 
 							id="sub_factory__form__applicant__phone__input3"
-							name="sub_factory__form__applicant__phone__input3"
+							name="phone3"
 							class="m_input_text sub_factory__form__applicant__phone__input3 " 
 							type="text"
 						>
@@ -203,7 +204,7 @@ get_header( 'sub' );
 					</h4>
 					<input 
 						id="sub_factory__form__applicant__email__input" 
-						name="sub_factory__form__applicant__email__input"
+						name="email"
 						class="m_input_text sub_factory__form__applicant__email__input" 
 						type="text"
 					>
@@ -215,19 +216,35 @@ get_header( 'sub' );
 			<div class="sub_factory__form__container sub_factory__form__category">
 				<h3 class="sub_factory__form__bigtitle sub_factory__form__category__title">견학분류</h3>
 				<p class="sub_factory__form__category__text">개인견학</p>
+				<input 
+					id="sub_factory__form__category__input" 
+					type="hidden" 
+					name="category" 
+					value=""
+				>
 			</div>
 			<div class="sub_factory__form__container sub_factory__form__date">
 				<h3 class=" sub_factory__form__bigtitle sub_factory__form__date__title">방문일자</h3>
 				<p class="sub_factory__form__date__text">2019년 9월 2일</p>
+				<input 
+					id="sub_factory__form__date__input" 
+					type="hidden" 
+					name="date" 
+					value=""
+				>
 			</div>
 			<div class="sub_factory__form__container sub_factory__form__require">
 				<h3 class="sub_factory__form__bigtitle sub_factory__form__require__title">요청사항</h3>
 				<textarea 
 					class="m_input_textarea sub_factory__form__require__textarea"
 					id="sub_factory__form__require__textarea"
-					name="sub_factory__form__require__textarea"
+					name="textarea"
 				>
 				</textarea>
+			</div>
+			<div class="sub_factory__form__container sub_factory__form__file">
+				<h3 class=" sub_factory__form__bigtitle sub_factory__form__file__title">첨부파일</h3> 
+				<input type="file" id="sub_factory__form__file_input" name="attach">
 			</div>
 		</form>	
 	</div>

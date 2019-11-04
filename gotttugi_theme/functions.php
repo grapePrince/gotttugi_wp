@@ -14,12 +14,13 @@
 
 ?>
 <?php
+
 /**
  * 스크립트를 로드한다.
  *
  * @return void
  */
-function load_scripts() {
+function load_vendor_scripts() {
 	wp_enqueue_script( 'bxslider', BASE_URI . '/js/jquery.bxslider.js', array( 'jquery' ), '4.2.12', true );
 	wp_enqueue_script( 'swiper', BASE_URI . '/js/swiper.min.js', array( 'jquery' ), '4.5.0', true );
 	wp_enqueue_script( 'waypoint', BASE_URI . '/js/jquery.waypoints.min.js', array( 'jquery' ), '4.0.1', true );
@@ -27,21 +28,30 @@ function load_scripts() {
 	wp_enqueue_script( 'smoothscroll', BASE_URI . '/js/jquery.smooth-scroll.min.js', array( 'jquery' ), '1.4.12', true );
 	wp_enqueue_script( 'animatenumber', BASE_URI . '/js/jquery.animateNumber.min.js', array( 'jquery' ), '0.0.14', true );
 	wp_enqueue_script( 'jqueryui', BASE_URI . '/js/jquery-ui-1.12.1.min.js', array( 'jquery' ), '1.12.1', true );
-	wp_enqueue_script( 'moment', BASE_URI . '/js/moment.2.24.0.min.js', array( 'moment' ), '2.24.0', true );
+	wp_enqueue_script( 'moment', BASE_URI . '/js/moment.2.24.0.min.js', array( 'jquery' ), '3.51.0', true );
+	wp_enqueue_script( 'jqueryform', BASE_URI . '/js/jquery.form.min.js', array( 'jquery' ), '3.51.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'load_vendor_scripts' );
 
+/**
+ * 메인 스크립트를 로드한다.
+ *
+ * @return void
+ */
+function load_main_scripts() {
 	wp_enqueue_script( 'main', BASE_URI . '/js/main.js', array( 'jquery' ), '1.0.0', true );
 
 	// main js 스크립트에 글로벌 변수를 넣어준다.
 	$config_array = array(
-		'baseURL'   => BASE_URI,
-		'rootURL'   => get_site_url(),
-		'ajaxURL'   => admin_url( 'admin-ajax.php' ),
+		'baseURL'          => BASE_URI,
+		'rootURL'          => get_site_url(),
+		'ajaxURL'          => admin_url( 'admin-ajax.php' ),
 		'ajaxFactoryNonce' => wp_create_nonce( 'factory_form' ),
 	);
 	wp_localize_script( 'main', 'appConf', $config_array );
 
 }
-add_action( 'wp_enqueue_scripts', 'load_scripts' );
+add_action( 'wp_enqueue_scripts', 'load_main_scripts' );
 
 /**
  * 스타일을 로드한다.
@@ -55,6 +65,9 @@ function load_styles() {
 	wp_enqueue_style( 'app', BASE_URI . '/css/font.css', array(), '1.0.0', true );  // 푸터 쪽에 로드됨.
 }
 add_action( 'wp_enqueue_scripts', 'load_styles' );
+
+
+
 
 /**
  * 이미 로드되어있는 jquery 버전을 최신 버전으로 업데이트 해준다.
@@ -75,15 +88,15 @@ add_action( 'init', 'modify_jquery_version' );
  *
  * @return void
  */
-function product_post_type() {
+function register_post_types() {
 	register_post_type(
 		'products',
 		array(
-			'label'        => 'Products',
+			'label'        => '상품들',
 			'labels'       =>
 				array(
-					'name'          => __( 'Products' ),
-					'singular_name' => __( 'Product' ),
+					'name'          => __( '상품들' ),
+					'singular_name' => __( '상품' ),
 				),
 			'public'       => true,
 			'has_archive'  => true,
@@ -99,8 +112,29 @@ function product_post_type() {
 			'show_in_rest' => true,
 		)
 	);
+	register_post_type(
+		'factory_form',
+		array(
+			'label'        => '공장견학요청서',
+			'labels'       =>
+				array(
+					'name'          => __( '공장견학요청서들' ),
+					'singular_name' => __( '공장견학요청서' ),
+				),
+			'public'       => true,
+			'has_archive'  => true,
+			'rewrite'      => true,
+			'supports'     =>
+				array(
+					'title',
+					'editor',
+					'custom-fields',
+				),
+			'show_in_rest' => true,
+		)
+	);
 }
-add_action( 'init', 'product_post_type' );
+add_action( 'init', 'register_post_types' );
 
 /**
  * Post type 카테고리를 등록한다.
@@ -189,20 +223,52 @@ add_filter( 'rest_products_query', 'post_meta_request_params', 99, 2 );
 function process_factory_form() {
 	check_admin_referer( 'factory_form' );
 
-	$name     = isset( $_POST['name'] ) ?: '';
-	$phone1   = isset( $_POST['phone1'] ) ?: '';
-	$phone2   = isset( $_POST['phone2'] ) ?: '';
-	$phone3   = isset( $_POST['phone3'] ) ?: '';
-	$email    = isset( $_POST['email'] ) ?: '';
-	$category = isset( $_POST['category'] ) ?: '';
-	$date     = isset( $_POST['date'] ) ?: '';
-	$textarea = isset( $_POST['textarea'] ) ?: '';
+	$name     = isset( $_POST['name'] ) ? wp_unslash( $_POST['name'] ) : '';
+	$phone1   = isset( $_POST['phone1'] ) ? wp_unslash( $_POST['phone1'] ) : '';
+	$phone2   = isset( $_POST['phone2'] ) ? wp_unslash( $_POST['phone2'] ) : '';
+	$phone3   = isset( $_POST['phone3'] ) ? wp_unslash( $_POST['phone3'] ) : '';
+	$email    = isset( $_POST['email'] ) ? wp_unslash( $_POST['email'] ) : '';
+	$category = isset( $_POST['category'] ) ? wp_unslash( $_POST['category'] ) : '';
+	$date     = isset( $_POST['date'] ) ? wp_unslash( $_POST['date'] ) : '';
+	$textarea = isset( $_POST['textarea'] ) ? wp_unslash( $_POST['textarea'] ) : '';
 
-	$response           = array();
-	$response['name']   = $name;
-	$response['phone1'] = $phone1;
+	$new_id = wp_insert_post(
+		array(
+			'post_title'   => "[{$category}][{$name}]{$date}",
+			'post_content' => $textarea,
+			'post_type'    => 'factory_form',
+			'post_status'  => 'publish',
+		)
+	);
 
-	echo( wp_json_encode( $response ) );
+	$wp_upload_dir = wp_upload_dir();
+
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	$fileinfo    = wp_handle_upload(
+		$_FILES['attach'],
+		array( 'action' => 'factory_form' ),
+	);
+
+	$wp_filetype = wp_check_filetype( basename( $fileinfo['file'] ), null );
+
+	$attachment = array(
+		'guid'           => $wp_upload_dir['url'] . '/' . basename( $fileinfo['file'] ),
+		'post_mime_type' => $wp_filetype['type'],
+		'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $fileinfo['file'] ) ),
+		'post_content'   => '',
+		'post_status'    => 'inherit',
+	);
+
+	$attach_id = wp_insert_attachment( $attachment, $fileinfo['file'], $new_id );
+
+	update_field( 'name', $name, $new_id );
+	update_field( 'phone', "{$phone1}-{$phone2}-{$phone3}", $new_id );
+	update_field( 'email', $email, $new_id );
+	update_field( 'category', $category, $new_id );
+	update_field( 'date', $date, $new_id );
+	update_field( 'attached', $attach_id, $new_id );
+
+	echo( 'success!' );
 	wp_die();
 }
 

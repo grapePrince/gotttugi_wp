@@ -1216,18 +1216,25 @@ function factoryNextButton() {
     .addClass('js-factory-form');
 
     if($('#sub_factory_category__form__input--groups').prop('checked')) {
-      $('.sub_factory__form__category__text').text('단체견학');
+			$('.sub_factory__form__category__text').text('단체견학');
+			$('#sub_factory__form__category__input').val('단체견학');
     } else {
-      $('.sub_factory__form__category__text').text('개인견학');
+			$('.sub_factory__form__category__text').text('개인견학');
+			$('#sub_factory__form__category__input').val('개인견학');
     }
 
-    $('.sub_factory__form__date__text').text('2019년 ' + $('#sub_factory__date__form__month').val() + '월 ' + $('#sub_factory__date__form__day').val() + '일');
+    $('.sub_factory__form__date__text').text(
+			$('#sub_factory__date__form__month').val() + 
+			'월 ' + 
+			$('#sub_factory__date__form__day').val() + 
+			'일'
+		);
+		$('#sub_factory__form__date__input').val($('.sub_factory__form__date__text').text());
 
     $('#sub_factory__form__applicant__name__input').focus();
 
   } else if ($('.sub_factory').hasClass('js-factory-form')) {
 		sendFactoryFormInfo();
-
   }
 }
 
@@ -1248,32 +1255,26 @@ function sendFactoryFormInfo() {
 		$('.sub_factory__form__applicant__validate').addClass('js-invalid');
 		$('.sub_factory__form__applicant__email__input').focus();
 	} else {
-		$.ajax({
-      url: appConf.ajaxURL,
-      type: 'POST',
-      data: { 
-        'action': 'factory_form', 
-				'_wpnonce': appConf.ajaxFactoryNonce,
-				'name': $('#sub_factory__form__applicant__name__input').val(),
-				'phone1': $('#sub_factory__form__applicant__name__input').val(),
-				'phone2': $('#sub_factory__form__applicant__name__input').val(),
-				'phone3': $('#sub_factory__form__applicant__name__input').val(),
-				'email': $('#sub_factory__form__applicant__name__input').val(),
-				'category': $('.sub_factory__form__category__text').text(),
-				'date': $('.sub_factory__form__date__text').text(),
-				'textarea': $('#sub_factory__form__require__textarea').val()
-      }
-    }).done(function(data) {
-			console.log(data);
-			$('.sub_factory')
-			.removeClass('js-factory-form')
-			.addClass('js-factory-complete');
-			$('.sub_factory_button--next').hide();
-			$('.sub_factory_button--prev').hide();
-			$('.sub_factory_button--cancel').hide();
-    }).fail(function(e) {
-			console.log(e);
-		});
+		var options = {
+			url          : appConf.ajaxURL,
+			type         : 'POST',
+			beforeSubmit : function(formData, jqForm, options) {
+				console.log(formData);
+			}, 
+			success      : function(data) {
+				console.log(data);
+				$('.sub_factory')
+				.removeClass('js-factory-form')
+				.addClass('js-factory-complete');
+				$('.sub_factory_button--next').hide();
+				$('.sub_factory_button--prev').hide();
+				$('.sub_factory_button--cancel').hide();
+			},
+			error        : function(e) {
+				console.log(e);
+			}
+		}
+		$('#factoryForm').ajaxSubmit(options); 
 	}
 }
 
