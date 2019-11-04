@@ -44,8 +44,8 @@ $(document).ready(function() {
   var weatherData = {};
   var factoryCalenderDate;
 
-	var BASE_URI = $('#uri_info').data('base_uri'); 
-	var ROOT_URI = $('#uri_info').data('root_uri');
+	var BASE_URI = appConf.baseURL;
+	var ROOT_URI = appConf.rootURL;
 	
 	var productListNextPage = 2;
 	var productPerPage = 4;
@@ -1249,22 +1249,22 @@ function sendFactoryFormInfo() {
 		$('.sub_factory__form__applicant__email__input').focus();
 	} else {
 		$.ajax({
-      url: ROOT_URI + '/wp-admin/admin-post.php',
+      url: appConf.ajaxURL,
       type: 'POST',
       data: { 
         'action': 'factory_form', 
-				'_wpnonce': $('input[name=_wpnonce]').attr('value'),
-				'_wp_http_referer': $('input[name=_wp_http_referer]').attr('value'),
-				'sub_factory__form__applicant__name__input': $('#sub_factory__form__applicant__name__input').val(),
-				'sub_factory__form__applicant__phone__input1': $('#sub_factory__form__applicant__name__input').val(),
-				'sub_factory__form__applicant__phone__input2': $('#sub_factory__form__applicant__name__input').val(),
-				'sub_factory__form__applicant__phone__input3': $('#sub_factory__form__applicant__name__input').val(),
-				'sub_factory__form__applicant__email__input': $('#sub_factory__form__applicant__name__input').val(),
-				'sub_factory__form__category': $('.sub_factory__form__category__text').text(),
-				'sub_factory__form__date': $('.sub_factory__form__date__text').text(),
-				'sub_factory__form__require__textarea': $('#sub_factory__form__require__textarea').val()
+				'_wpnonce': appConf.ajaxFactoryNonce,
+				'name': $('#sub_factory__form__applicant__name__input').val(),
+				'phone1': $('#sub_factory__form__applicant__name__input').val(),
+				'phone2': $('#sub_factory__form__applicant__name__input').val(),
+				'phone3': $('#sub_factory__form__applicant__name__input').val(),
+				'email': $('#sub_factory__form__applicant__name__input').val(),
+				'category': $('.sub_factory__form__category__text').text(),
+				'date': $('.sub_factory__form__date__text').text(),
+				'textarea': $('#sub_factory__form__require__textarea').val()
       }
     }).done(function(data) {
+			console.log(data);
 			$('.sub_factory')
 			.removeClass('js-factory-form')
 			.addClass('js-factory-complete');

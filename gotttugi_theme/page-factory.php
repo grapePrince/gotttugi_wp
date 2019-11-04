@@ -161,8 +161,6 @@ get_header( 'sub' );
 			id="factoryForm"
 		>
 			<input type="hidden" name="action" value="factory_form">
-			<?php wp_nonce_field( 'factory_form' ); ?>
-
 			<div class="sub_factory__form__container sub_factory__form__applicant">
 				<h3 class="sub_factory__form__bigtitle sub_factory__form__applicant__title ">신청자정보</h3>
 				<div class="sub_factory__form__item__container sub_factory__form__applicant__name">

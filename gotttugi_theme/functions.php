@@ -30,6 +30,16 @@ function load_scripts() {
 	wp_enqueue_script( 'moment', BASE_URI . '/js/moment.2.24.0.min.js', array( 'moment' ), '2.24.0', true );
 
 	wp_enqueue_script( 'main', BASE_URI . '/js/main.js', array( 'jquery' ), '1.0.0', true );
+
+	// main js 스크립트에 글로벌 변수를 넣어준다.
+	$config_array = array(
+		'baseURL'   => BASE_URI,
+		'rootURL'   => get_site_url(),
+		'ajaxURL'   => admin_url( 'admin-ajax.php' ),
+		'ajaxFactoryNonce' => wp_create_nonce( 'factory_form' ),
+	);
+	wp_localize_script( 'main', 'appConf', $config_array );
+
 }
 add_action( 'wp_enqueue_scripts', 'load_scripts' );
 
@@ -157,9 +167,9 @@ add_filter( 'rest_prepare_products', 'rest_prepare_products', 10, 3 );
 /**
  * Post를 Rest API 로 가져올 때 meta_key, meta_value 함께 가져와준다.
  *
- * @param   array   $args       Contains by default pre written params.
- * @param   array   $request    Contains params values passed through URL request.
- * @return  array   $args       New array with added custom params and its values.
+ * @param   array $args       Contains by default pre written params.
+ * @param   array $request    Contains params values passed through URL request.
+ * @return  array $args       New array with added custom params and its values.
  */
 function post_meta_request_params( $args, $request ) {
 	$args += array(
@@ -169,3 +179,32 @@ function post_meta_request_params( $args, $request ) {
 		return $args;
 }
 add_filter( 'rest_products_query', 'post_meta_request_params', 99, 2 );
+
+
+/**
+ * Factory Form Function
+ *
+ * @return  void
+ */
+function process_factory_form() {
+	check_admin_referer( 'factory_form' );
+
+	$name     = isset( $_POST['name'] ) ?: '';
+	$phone1   = isset( $_POST['phone1'] ) ?: '';
+	$phone2   = isset( $_POST['phone2'] ) ?: '';
+	$phone3   = isset( $_POST['phone3'] ) ?: '';
+	$email    = isset( $_POST['email'] ) ?: '';
+	$category = isset( $_POST['category'] ) ?: '';
+	$date     = isset( $_POST['date'] ) ?: '';
+	$textarea = isset( $_POST['textarea'] ) ?: '';
+
+	$response           = array();
+	$response['name']   = $name;
+	$response['phone1'] = $phone1;
+
+	echo( wp_json_encode( $response ) );
+	wp_die();
+}
+
+add_action( 'wp_ajax_factory_form', 'process_factory_form' );
+add_action( 'wp_ajax_nopriv_factory_form', 'process_factory_form' );
