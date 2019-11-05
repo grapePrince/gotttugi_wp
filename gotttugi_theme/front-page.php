@@ -657,7 +657,9 @@ get_header( 'front' );
 				<div class="s_factory_feature__text">기념촬영</div>  
 			</div>
 		</div>
-		<div class="l_factory_button s_factory_button m_button--square--border--big js-href" data-href="/factory.html">
+		<div 
+			class="l_factory_button s_factory_button m_button--square--border--big js-href" 
+			data-href="<?php echo( esc_url( get_site_url() ) . '/공장견학신청' ); ?>">
 			신청하러 가기
 			<div class="m_button--square--border__icon--more--big">
 				+
